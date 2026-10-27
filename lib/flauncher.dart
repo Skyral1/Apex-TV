@@ -63,11 +63,11 @@ class _FLauncherState extends State<FLauncher> {
           ),
           Consumer<LauncherState>(
             builder: (_, state, child) => Visibility(
-              child: child!,
               replacement: const Center(
                 child: AlternativeLauncherView()
               ),
-              visible: state.launcherVisible
+              visible: state.launcherVisible,
+              child: child!
             ),
             child: Scaffold(
               backgroundColor: Colors.transparent,
@@ -213,9 +213,9 @@ class _FLauncherState extends State<FLauncher> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.black.withOpacity(0.35),
-                Colors.black.withOpacity(0.15),
-                Colors.black.withOpacity(0.45),
+                Colors.black.withValues(alpha: 0.35),
+                Colors.black.withValues(alpha: 0.15),
+                Colors.black.withValues(alpha: 0.45),
               ],
             ),
           ),

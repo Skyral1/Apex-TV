@@ -16,16 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/database.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
 import 'package:flauncher/widgets/add_to_category_dialog.dart';
-import 'package:flauncher/widgets/application_info_panel.dart';
 import 'package:flauncher/widgets/settings/applications_panel_page.dart';
 import 'package:flauncher/widgets/settings/app_details_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -37,13 +33,7 @@ import '../../mocks.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("TV Applications shows TV apps", (tester) async {
     final appsService = MockAppsService();
@@ -143,14 +133,36 @@ void main() {
   });
 }
 
-Future<void> _pumpWidgetWithProviders(WidgetTester tester, MockAppsService appsService) async {
+Future<void> _pumpWidgetWithProviders(
+  WidgetTester tester,
+  MockAppsService appsService,
+) async {
+  // Conserve les conditions d'affichage historiques de ces tests.
+  tester.view.physicalSize = const Size(1280, 720);
+  tester.view.devicePixelRatio = 1.0;
+
+  // La police Ahem utilisée dans les tests est plus large que Roboto.
+  tester.platformDispatcher.textScaleFactorTestValue = 0.8;
+
+  // Restaure les paramètres après chaque test, même en cas d'échec.
+  addTearDown(() {
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
+    tester.platformDispatcher.clearTextScaleFactorTestValue();
+  });
+
   when(appsService.categories).thenReturn([]);
   when(appsService.isAppInFavorites(any)).thenReturn(false);
-  when(appsService.getAppIcon(any)).thenAnswer((_) async => kTransparentImage);
+  when(appsService.getAppIcon(any)).thenAnswer(
+    (_) async => kTransparentImage,
+  );
+
   await tester.pumpWidget(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppsService>.value(value: appsService),
+        ChangeNotifierProvider<AppsService>.value(
+          value: appsService,
+        ),
       ],
       builder: (_, __) => MaterialApp(
         localizationsDelegates: const [
@@ -162,12 +174,18 @@ Future<void> _pumpWidgetWithProviders(WidgetTester tester, MockAppsService appsS
         routes: {
           AppDetailsPage.routeName: (context) {
             final app = ModalRoute.of(context)!.settings.arguments as App;
-            return Scaffold(body: AppDetailsPage(application: app));
+
+            return Scaffold(
+              body: AppDetailsPage(application: app),
+            );
           },
         },
-        home: Scaffold(body: ApplicationsPanelPage()),
+        home: Scaffold(
+          body: ApplicationsPanelPage(),
+        ),
       ),
     ),
   );
+
   await tester.pumpAndSettle();
 }

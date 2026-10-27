@@ -23,7 +23,7 @@ class RightPanelDialog extends StatelessWidget {
   final Widget child;
   final double width;
 
-  const RightPanelDialog({
+  const RightPanelDialog({super.key, 
     required this.child,
     this.width = 250,
   });

@@ -9,7 +9,7 @@ import 'package:flauncher/l10n/app_localizations.dart';
 class BackButtonActionPage extends StatelessWidget {
   static const String routeName = "back_button_action_panel";
 
-  const BackButtonActionPage({Key? key}) : super(key: key);
+  const BackButtonActionPage({super.key});
 
   @override
   Widget build(BuildContext context) {

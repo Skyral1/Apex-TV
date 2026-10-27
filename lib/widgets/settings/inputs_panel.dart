@@ -5,9 +5,10 @@ import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
 import 'package:flauncher/providers/tv_inputs_service.dart';
 import 'package:flauncher/models/tv_input.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 
 class InputsPanel extends StatelessWidget {
-  const InputsPanel({Key? key}) : super(key: key);
+  const InputsPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class InputsPanel extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.70), // Dim background
+      backgroundColor: Colors.black.withValues(alpha: 0.70), // Dim background
       body: Stack(
         children: [
           // Tap outside to close
@@ -50,8 +51,7 @@ class InputsPanel extends StatelessWidget {
                               ),
                             )
                           : ListView.builder(
-                              cacheExtent: 1000,
-                              itemCount: inputs.length,
+                              scrollCacheExtent: ScrollCacheExtent.pixels(1000), itemCount: inputs.length,
                               itemBuilder: (context, index) {
                                 final input = inputs[index];
                                 IconData iconData;

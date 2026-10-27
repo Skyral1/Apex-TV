@@ -36,7 +36,7 @@ class ApplicationInfoPanel extends StatefulWidget
   final App application;
   final ImageProvider? applicationIcon;
 
-  const ApplicationInfoPanel({
+  const ApplicationInfoPanel({super.key, 
     required this.category,
     required this.application,
     this.applicationIcon

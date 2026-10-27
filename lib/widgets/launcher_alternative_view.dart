@@ -287,7 +287,7 @@ class _BouncingDvdClockState extends State<_BouncingDvdClock> with SingleTickerP
                   textStyle: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     fontSize: 48,
                     fontWeight: FontWeight.w300,
-                    color: currentColor.withOpacity(0.85),
+                    color: currentColor.withValues(alpha: 0.85),
                     shadows: const [Shadow(color: Colors.black54, offset: Offset(1, 1), blurRadius: 12)],
                   ),
                 ),

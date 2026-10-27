@@ -12,14 +12,11 @@ import 'package:flauncher/providers/settings_service.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets("AccessibilityPage renders correctly when default launcher", (tester) async {
+  testWidgets("AccessibilityPage renders correctly when default launcher",
+      (tester) async {
+    _configureTestDisplay(tester);
     final appsService = MockAppsService();
     final launcherState = LauncherState();
     final settingsService = MockSettingsService();
@@ -55,7 +52,9 @@ void main() {
     expect(find.text("Set as default launcher"), findsOneWidget);
   });
 
-  testWidgets("AccessibilityPage renders correctly when not default launcher", (tester) async {
+  testWidgets("AccessibilityPage renders correctly when not default launcher",
+      (tester) async {
+    _configureTestDisplay(tester);
     final appsService = MockAppsService();
     final launcherState = LauncherState();
     final settingsService = MockSettingsService();
@@ -87,6 +86,20 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text("Accessibility"), findsOneWidget);
-    expect(find.text("LTvLauncher is not the default launcher"), findsOneWidget);
+    expect(
+        find.text("LTvLauncher is not the default launcher"), findsOneWidget);
+  });
+}
+
+/// Configure l'affichage de ce test et restaure ses paramètres à la fin.
+void _configureTestDisplay(WidgetTester tester) {
+  tester.view.physicalSize = const Size(1280, 720);
+  tester.view.devicePixelRatio = 1.0;
+  tester.platformDispatcher.textScaleFactorTestValue = 0.8;
+
+  addTearDown(() {
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
+    tester.platformDispatcher.clearTextScaleFactorTestValue();
   });
 }

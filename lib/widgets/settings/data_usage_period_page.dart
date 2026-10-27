@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class DataUsagePeriodPage extends StatelessWidget {
   static const String routeName = "data_usage_period_panel";
 
-  const DataUsagePeriodPage({Key? key}) : super(key: key);
+  const DataUsagePeriodPage({super.key});
 
   @override
   Widget build(BuildContext context) {

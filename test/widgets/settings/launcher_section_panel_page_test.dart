@@ -74,7 +74,9 @@ void main() {
   testWidgets("Saving a new section returns to the previous page", (tester) async {
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([fakeCategory(name: "Favorites")]);
-    when(appsService.addSpacer(any)).thenAnswer((_) async {});
+    when(appsService.addSpacer(any)).thenAnswer((_) async {
+      return null;
+    });
 
     await tester.pumpWidget(
       ChangeNotifierProvider<AppsService>.value(

@@ -25,7 +25,7 @@ import 'package:flauncher/l10n/app_localizations.dart';
 class MiscPanelPage extends StatelessWidget {
   static const String routeName = "misc_panel";
 
-  const MiscPanelPage({Key? key}) : super(key: key);
+  const MiscPanelPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -25,7 +25,7 @@ import 'package:provider/provider.dart';
 class AppLanguagePage extends StatelessWidget {
   static const String routeName = "app_language_panel";
 
-  const AppLanguagePage({Key? key}) : super(key: key);
+  const AppLanguagePage({super.key});
 
   @override
   Widget build(BuildContext context) {

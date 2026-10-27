@@ -16,7 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/database.dart';
 import 'package:flauncher/providers/apps_service.dart';
 import 'package:flauncher/models/category.dart';
 import 'package:flauncher/models/app.dart';
@@ -33,13 +32,7 @@ import '../mocks.dart';
 import '../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("'Open' calls launchApp on AppsService", (tester) async {
     final appsService = MockAppsService();
@@ -145,15 +138,42 @@ Future<void> _pumpWidgetWithProviders(
   Category? category,
   App application,
 ) async {
-  when(appsService.isAppInFavorites(application)).thenReturn(false);
-  when(appsService.hasCustomBanner(application.packageName)).thenAnswer((_) async => false);
-  when(appsService.getAppIcon(application.packageName)).thenAnswer((_) async => Uint8List(0));
-  when(appsService.getAppBanner(application.packageName)).thenAnswer((_) async => Uint8List(0));
+  // Conserve les conditions d'affichage historiques de ces tests.
+  tester.view.physicalSize = const Size(1280, 720);
+  tester.view.devicePixelRatio = 1.0;
+
+  // La police Ahem utilisée dans les tests est plus large que Roboto.
+  tester.platformDispatcher.textScaleFactorTestValue = 0.8;
+
+  // Restaure les paramètres après chaque test, même en cas d'échec.
+  addTearDown(() {
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
+    tester.platformDispatcher.clearTextScaleFactorTestValue();
+  });
+
+  when(
+    appsService.isAppInFavorites(application),
+  ).thenReturn(false);
+
+  when(
+    appsService.hasCustomBanner(application.packageName),
+  ).thenAnswer((_) async => false);
+
+  when(
+    appsService.getAppIcon(application.packageName),
+  ).thenAnswer((_) async => Uint8List(0));
+
+  when(
+    appsService.getAppBanner(application.packageName),
+  ).thenAnswer((_) async => Uint8List(0));
 
   await tester.pumpWidget(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppsService>.value(value: appsService),
+        ChangeNotifierProvider<AppsService>.value(
+          value: appsService,
+        ),
       ],
       builder: (_, __) => MaterialApp(
         localizationsDelegates: const [
@@ -169,5 +189,6 @@ Future<void> _pumpWidgetWithProviders(
       ),
     ),
   );
+
   await tester.pumpAndSettle();
 }

@@ -47,7 +47,7 @@ const List<(String format, String example)> timeFormatPresets = [
 class DateTimeFormatPage extends StatefulWidget {
   static const String routeName = "date_time_format_panel";
 
-  const DateTimeFormatPage({Key? key}) : super(key: key);
+  const DateTimeFormatPage({super.key});
 
   @override
   State<DateTimeFormatPage> createState() => _DateTimeFormatPageState();

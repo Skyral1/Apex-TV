@@ -52,7 +52,7 @@ import 'package:flutter/material.dart';
 class SettingsPanel extends StatefulWidget {
   final String? initialRoute;
 
-  const SettingsPanel({Key? key, this.initialRoute}) : super(key: key);
+  const SettingsPanel({super.key, this.initialRoute});
 
   @override
   State<SettingsPanel> createState() => _SettingsPanelState();
@@ -76,7 +76,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.black.withOpacity(0.70), // Dim the background
+        backgroundColor: Colors.black.withValues(alpha: 0.70), // Dim the background
         body: Stack(
           children: [
             // Tap outside to close

@@ -40,12 +40,12 @@ class AppsService extends ChangeNotifier {
 
   bool _initialized = false;
 
-  List<LauncherSection> _launcherSections = List.empty(growable: true);
-  Map<String, App> _applications = Map();
-  Map<String, Uint8List> _iconCache = Map();
-  Map<String, Uint8List> _bannerCache = Map();
+  final List<LauncherSection> _launcherSections = List.empty(growable: true);
+  Map<String, App> _applications = {};
+  final Map<String, Uint8List> _iconCache = {};
+  final Map<String, Uint8List> _bannerCache = {};
 
-  Map<int, Category> _categoriesById = Map();
+  Map<int, Category> _categoriesById = {};
   Map<String, Category>? _categoriesByNameCache;
   Category? _fallbackCategoryCache;
 
@@ -232,9 +232,7 @@ class AppsService extends ChangeNotifier {
 
   AppsCompanion _buildAppCompanion(dynamic data) {
     String? version = data["version"];
-    if (version == null) {
-      version = "";
-    }
+    version ??= "";
 
     return AppsCompanion(
         packageName: Value(data["packageName"]),
@@ -319,7 +317,7 @@ class AppsService extends ChangeNotifier {
     List<Map<dynamic, dynamic>> appsFromSystem =
         await _fLauncherChannel.getApplications();
     Iterable<MapEntry<String, (Map, AppsCompanion)>> appEntries =
-        appsFromSystem.map((appFromSystem) => new MapEntry(
+        appsFromSystem.map((appFromSystem) => MapEntry(
             appFromSystem['packageName'],
             (appFromSystem, _buildAppCompanion(appFromSystem))));
     Map<String, (Map, AppsCompanion)> appsFromSystemByPackageName =
@@ -1009,7 +1007,9 @@ class AppsService extends ChangeNotifier {
     if (oldIndex < 0 ||
         oldIndex >= _launcherSections.length ||
         newIndex < 0 ||
-        newIndex >= _launcherSections.length) return;
+        newIndex >= _launcherSections.length) {
+      return;
+    }
 
     final section = _launcherSections.removeAt(oldIndex);
     _launcherSections.insert(newIndex, section);
@@ -1023,9 +1023,9 @@ class AppsService extends ChangeNotifier {
     for (int i = 0; i < _launcherSections.length; ++i) {
       LauncherSection section = _launcherSections[i];
       // Update the order property on the object itself
-      if (section is Category)
+      if (section is Category) {
         section.order = i;
-      else if (section is LauncherSpacer) section.order = i;
+      } else if (section is LauncherSpacer) section.order = i;
 
       if (section is Category) {
         orderedCategories

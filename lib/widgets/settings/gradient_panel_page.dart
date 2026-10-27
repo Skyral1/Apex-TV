@@ -25,6 +25,8 @@ import 'package:provider/provider.dart';
 class GradientPanelPage extends StatelessWidget {
   static const String routeName = "gradient_panel";
 
+  const GradientPanelPage({super.key});
+
   @override
   Widget build(BuildContext context) => Column(
         children: [

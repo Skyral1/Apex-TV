@@ -34,12 +34,12 @@ class WatchNextInfoPanel extends StatefulWidget {
   final Uint8List? appIconBytes;
 
   const WatchNextInfoPanel({
-    Key? key,
+    super.key,
     required this.program,
     required this.watchNextService,
     required this.appsService,
     this.appIconBytes,
-  }) : super(key: key);
+  });
 
   @override
   State<WatchNextInfoPanel> createState() => _WatchNextInfoPanelState();

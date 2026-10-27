@@ -28,6 +28,8 @@ import '../../providers/settings_service.dart';
 class StatusBarPanelPage extends StatelessWidget {
   static const String routeName = "status_bar_panel";
 
+  const StatusBarPanelPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
@@ -126,7 +128,7 @@ class StatusBarPanelPage extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.05),
+                              color: Colors.white.withValues(alpha: 0.05),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Row(

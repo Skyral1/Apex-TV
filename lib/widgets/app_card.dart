@@ -249,7 +249,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                           borderRadius: borderRadius,
                           clipBehavior: Clip.antiAlias,
                           elevation: shouldHighlight ? (themes == 'minimal' ? 6 : (themes == 'classic' ? 8 : 16)) : 0,
-                          shadowColor: (shouldHighlight && themes == 'glow') ? accentColor.withOpacity(0.85) : Colors.black,
+                          shadowColor: (shouldHighlight && themes == 'glow') ? accentColor.withValues(alpha: 0.85) : Colors.black,
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
@@ -414,7 +414,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                                                   decoration: BoxDecoration(
                                                     borderRadius: borderRadius,
                                                     border: Border.all(
-                                                      color: accentColor.withOpacity(opacity),
+                                                      color: accentColor.withValues(alpha: opacity),
                                                       width: 2
                                                     ),
                                                   ),
@@ -426,7 +426,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
                                                     decoration: BoxDecoration(
                                                       borderRadius: innerBorderRadius,
                                                       border: Border.all(
-                                                        color: Colors.black.withOpacity(opacity),
+                                                        color: Colors.black.withValues(alpha: opacity),
                                                         width: 2
                                                       ),
                                                     ),
@@ -664,7 +664,7 @@ class _AppCardState extends State<AppCard> with TickerProviderStateMixin {
           alignment: alignment,
           child: Ink(
             decoration: ShapeDecoration(
-              color: Theme.of(context).primaryColor.withOpacity(0.8),
+              color: Theme.of(context).primaryColor.withValues(alpha: 0.8),
               shape: CircleBorder()
             ),
             child: SizedBox(

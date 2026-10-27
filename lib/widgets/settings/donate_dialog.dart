@@ -23,7 +23,7 @@ import 'package:provider/provider.dart';
 import 'package:flauncher/providers/settings_service.dart';
 
 class DonateDialog extends StatefulWidget {
-  const DonateDialog({Key? key}) : super(key: key);
+  const DonateDialog({super.key});
 
   @override
   State<DonateDialog> createState() => _DonateDialogState();
@@ -61,7 +61,7 @@ class _DonateDialogState extends State<DonateDialog> {
           color: const Color(0xFF0F0F0F),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: Colors.white.withOpacity(0.12),
+            color: Colors.white.withValues(alpha: 0.12),
             width: 1,
           ),
         ),
@@ -159,9 +159,9 @@ class _DonateDialogState extends State<DonateDialog> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
-                  color: currentBrandColor.withOpacity(0.2),
+                  color: currentBrandColor.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: currentBrandColor.withOpacity(0.5)),
+                  border: Border.all(color: currentBrandColor.withValues(alpha: 0.5)),
                 ),
                 child: Text(
                   currentPlatform,
@@ -236,8 +236,8 @@ class _PlatformTabButtonState extends State<_PlatformTabButton> {
   @override
   Widget build(BuildContext context) {
     final Color bgColor = widget.isSelected
-        ? widget.accentColor.withOpacity(0.3)
-        : (_focused ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.05));
+        ? widget.accentColor.withValues(alpha: 0.3)
+        : (_focused ? Colors.white.withValues(alpha: 0.1) : Colors.white.withValues(alpha: 0.05));
 
     final Color borderColor = _focused
         ? Colors.white
@@ -326,7 +326,7 @@ class _DialogActionButtonState extends State<_DialogActionButton> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              color: _focused ? widget.accentColor.withOpacity(0.3) : Colors.white.withOpacity(0.06),
+              color: _focused ? widget.accentColor.withValues(alpha: 0.3) : Colors.white.withValues(alpha: 0.06),
               borderRadius: BorderRadius.circular(8),
               border: Border.all(
                 color: _focused ? Colors.white : Colors.transparent,

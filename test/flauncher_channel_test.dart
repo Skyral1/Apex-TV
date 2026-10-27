@@ -9,11 +9,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
 import 'package:flauncher/flauncher_channel.dart';
@@ -21,56 +21,69 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  setUpAll(() {
-    TestWidgetsFlutterBinding.ensureInitialized();
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  const channel = MethodChannel('me.efesser.flauncher/method');
+
+  final messenger =
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+
+  tearDown(() {
+    // Retire explicitement le gestionnaire installé par le test.
+    messenger.setMockMethodCallHandler(channel, null);
   });
 
-  test("getApplications", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getApplications") {
+  test('getApplications', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getApplications') {
         return [
-          {'packageName': 'me.efesser.flauncher'}
+          {'packageName': 'me.efesser.flauncher'},
         ];
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final apps = await fLauncherChannel.getApplications();
 
     expect(apps, [
-      {'packageName': 'me.efesser.flauncher'}
+      {'packageName': 'me.efesser.flauncher'},
     ]);
   });
 
-  test("launchApp", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
+  test('launchApp', () async {
     String? packageName;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "launchApp") {
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'launchApp') {
         packageName = call.arguments as String;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
-    await fLauncherChannel.launchApp("me.efesser.flauncher");
+    await fLauncherChannel.launchApp('me.efesser.flauncher');
 
-    expect(packageName, "me.efesser.flauncher");
+    expect(packageName, 'me.efesser.flauncher');
   });
 
-  test("openSettings", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    bool called = false;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "openSettings") {
+  test('openSettings', () async {
+    var called = false;
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'openSettings') {
         called = true;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     await fLauncherChannel.openSettings();
@@ -78,48 +91,53 @@ void main() {
     expect(called, isTrue);
   });
 
-  test("openAppInfo", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
+  test('openAppInfo', () async {
     String? packageName;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "openAppInfo") {
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'openAppInfo') {
         packageName = call.arguments as String;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
-    await fLauncherChannel.openAppInfo("me.efesser.flauncher");
+    await fLauncherChannel.openAppInfo('me.efesser.flauncher');
 
-    expect(packageName, "me.efesser.flauncher");
+    expect(packageName, 'me.efesser.flauncher');
   });
 
-  test("uninstallApp", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
+  test('uninstallApp', () async {
     String? packageName;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "uninstallApp") {
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'uninstallApp') {
         packageName = call.arguments as String;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
-    await fLauncherChannel.uninstallApp("me.efesser.flauncher");
+    await fLauncherChannel.uninstallApp('me.efesser.flauncher');
 
-    expect(packageName, "me.efesser.flauncher");
+    expect(packageName, 'me.efesser.flauncher');
   });
 
-  test("isDefaultLauncher", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "isDefaultLauncher") {
+  test('isDefaultLauncher', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'isDefaultLauncher') {
         return true;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final isDefaultLauncher = await fLauncherChannel.isDefaultLauncher();
@@ -127,31 +145,35 @@ void main() {
     expect(isDefaultLauncher, isTrue);
   });
 
-  test("checkForGetContentAvailability", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "checkForGetContentAvailability") {
+  test('checkForGetContentAvailability', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'checkForGetContentAvailability') {
         return true;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
-    final getContentAvailable = await fLauncherChannel.checkForGetContentAvailability();
+    final getContentAvailable =
+        await fLauncherChannel.checkForGetContentAvailability();
 
     expect(getContentAvailable, isTrue);
   });
 
-  test("startAmbientMode", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    bool called = false;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "startAmbientMode") {
+  test('startAmbientMode', () async {
+    var called = false;
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'startAmbientMode') {
         called = true;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     await fLauncherChannel.startAmbientMode();
@@ -159,14 +181,15 @@ void main() {
     expect(called, isTrue);
   });
 
-  test("getDailyDataUsage success", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getDailyDataUsage") {
+  test('getDailyDataUsage success', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getDailyDataUsage') {
         return 12345;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getDailyDataUsage();
@@ -174,14 +197,15 @@ void main() {
     expect(usage, 12345);
   });
 
-  test("getDailyDataUsage platform exception", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getDailyDataUsage") {
-        throw PlatformException(code: "ERROR");
+  test('getDailyDataUsage platform exception', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getDailyDataUsage') {
+        throw PlatformException(code: 'ERROR');
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getDailyDataUsage();
@@ -189,14 +213,15 @@ void main() {
     expect(usage, -1);
   });
 
-  test("getWeeklyDataUsage success", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getWeeklyDataUsage") {
+  test('getWeeklyDataUsage success', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getWeeklyDataUsage') {
         return 67890;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getWeeklyDataUsage();
@@ -204,14 +229,15 @@ void main() {
     expect(usage, 67890);
   });
 
-  test("getWeeklyDataUsage platform exception", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getWeeklyDataUsage") {
-        throw PlatformException(code: "ERROR");
+  test('getWeeklyDataUsage platform exception', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getWeeklyDataUsage') {
+        throw PlatformException(code: 'ERROR');
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getWeeklyDataUsage();
@@ -219,14 +245,15 @@ void main() {
     expect(usage, -1);
   });
 
-  test("getMonthlyDataUsage success", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getMonthlyDataUsage") {
+  test('getMonthlyDataUsage success', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getMonthlyDataUsage') {
         return 99999;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getMonthlyDataUsage();
@@ -234,14 +261,15 @@ void main() {
     expect(usage, 99999);
   });
 
-  test("getMonthlyDataUsage platform exception", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "getMonthlyDataUsage") {
-        throw PlatformException(code: "ERROR");
+  test('getMonthlyDataUsage platform exception', () async {
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'getMonthlyDataUsage') {
+        throw PlatformException(code: 'ERROR');
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     final usage = await fLauncherChannel.getMonthlyDataUsage();
@@ -249,16 +277,18 @@ void main() {
     expect(usage, -1);
   });
 
-  test("openVpnSettings", () async {
-    final channel = MethodChannel('me.efesser.flauncher/method');
-    bool called = false;
-    channel.setMockMethodCallHandler((call) async {
-      if (call.method == "openVpnSettings") {
+  test('openVpnSettings', () async {
+    var called = false;
+
+    messenger.setMockMethodCallHandler(channel, (call) async {
+      if (call.method == 'openVpnSettings') {
         called = true;
         return;
       }
-      fail("Unhandled method name");
+
+      fail('Unhandled method name: ${call.method}');
     });
+
     final fLauncherChannel = FLauncherChannel();
 
     await fLauncherChannel.openVpnSettings();

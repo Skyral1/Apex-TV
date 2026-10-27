@@ -141,8 +141,9 @@ class LauncherSectionPanelPage extends StatelessWidget
 
   final int? sectionIndex;
 
-  LauncherSectionPanelPage({Key? key, this.sectionIndex}): super(key: key);
+  const LauncherSectionPanelPage({super.key, this.sectionIndex});
 
+  @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context)!;
 
@@ -201,7 +202,7 @@ class LauncherSectionPanelPage extends StatelessWidget
                         ),
                         isDense: true,
                         isExpanded: true,
-                        value: sectionType,
+                        initialValue: sectionType,
                         onChanged: (value) {
                           if (value != null) {
                             state.setSectionType(value);
@@ -434,7 +435,7 @@ class _CategorySettingsState extends State<_CategorySettings>
               autofocus: _creating,
               isDense: true,
               isExpanded: true,
-              value: sectionNamePresets.contains(_name) ? _name : 'Custom...',
+              initialValue: sectionNamePresets.contains(_name) ? _name : 'Custom...',
               hint: Text(_name.isEmpty ? 'Select a name' : _name, style: Theme.of(context).textTheme.bodySmall),
               onChanged: (value) {
                 setState(() {
@@ -489,7 +490,7 @@ class _CategorySettingsState extends State<_CategorySettings>
               ),
               isDense: true,
               isExpanded: true,
-              value: _categorySort,
+              initialValue: _categorySort,
               onChanged: (value) {
                 setState(() {
                   _categorySort = value!;
@@ -524,7 +525,7 @@ class _CategorySettingsState extends State<_CategorySettings>
                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 2)),
                 contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               ),
-              value: _categoryType,
+              initialValue: _categoryType,
               onChanged: (value) {
                 setState(() {
                   _categoryType = value!;
@@ -558,7 +559,7 @@ class _CategorySettingsState extends State<_CategorySettings>
                   focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 2)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 ),
-                value: _columnsCount,
+                initialValue: _columnsCount,
                 isDense: true,
                 isExpanded: true,
                 items: [for (int i = 5; i <= 10; i++) i]
@@ -589,7 +590,7 @@ class _CategorySettingsState extends State<_CategorySettings>
                   focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 2)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 ),
-                value: _rowHeight,
+                initialValue: _rowHeight,
                 isDense: true,
                 isExpanded: true,
                 items: [for (int i = 80; i <= 150; i += 10) i]
@@ -733,7 +734,7 @@ class _LauncherSpacerSettingsState extends State<_LauncherSpacerSettings>
           ),
           isDense: true,
           isExpanded: true,
-          value: _numberValue,
+          initialValue: _numberValue,
           onChanged: (value) {
             setState(() {
               _numberValue = value!;

@@ -35,12 +35,12 @@ class AppsGrid extends StatelessWidget
 
   final bool isFirstSection;
 
-  AppsGrid({
-    Key? key,
+  const AppsGrid({
+    super.key,
     required this.category,
     required this.applications,
     this.isFirstSection = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

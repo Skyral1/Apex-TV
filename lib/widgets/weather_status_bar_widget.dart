@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class WeatherStatusBarWidget extends StatefulWidget {
   final FocusNode? focusNode;
 
-  const WeatherStatusBarWidget({Key? key, this.focusNode}) : super(key: key);
+  const WeatherStatusBarWidget({super.key, this.focusNode});
 
   @override
   State<WeatherStatusBarWidget> createState() => _WeatherStatusBarWidgetState();
@@ -65,12 +65,12 @@ class _WeatherStatusBarWidgetState extends State<WeatherStatusBarWidget> {
                     duration: const Duration(milliseconds: 150),
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(14),
                       border: Border.all(
                         color: _focused
                             ? theme.colorScheme.primary
-                            : Colors.white.withOpacity(0.12),
+                            : Colors.white.withValues(alpha: 0.12),
                         width: 1,
                       ),
                       boxShadow: _focused

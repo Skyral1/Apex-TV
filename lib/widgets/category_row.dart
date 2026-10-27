@@ -21,6 +21,7 @@ import 'package:flauncher/widgets/app_card.dart';
 import 'package:flauncher/widgets/category_container_common.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 
 import '../models/app.dart';
 import '../models/category.dart';
@@ -33,12 +34,12 @@ class CategoryRow extends StatelessWidget
 
   final bool isFirstSection;
 
-  CategoryRow({
-    Key? key,
+  const CategoryRow({
+    super.key,
     required this.category,
     required this.applications,
     this.isFirstSection = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +51,8 @@ class CategoryRow extends StatelessWidget
       categoryContent = SizedBox(
         height: category.rowHeight.toDouble(),
         child: ListView.custom(
-          clipBehavior: Clip.none,
+          scrollCacheExtent: ScrollCacheExtent.pixels(240.0), clipBehavior: Clip.none,
           physics: const ClampingScrollPhysics(),
-          cacheExtent: 240.0,
           padding: const EdgeInsets.all(8),
           scrollDirection: Axis.horizontal,
           childrenDelegate: SliverChildBuilderDelegate(

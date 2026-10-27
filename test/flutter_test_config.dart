@@ -1,11 +1,11 @@
 import 'dart:async';
-import 'dart:ffi';
-import 'dart:io';
-import 'package:sqlite3/open.dart';
 
-Future<void> testExecutable(FutureOr<void> Function() testMain) async {
-  if (Platform.isLinux) {
-    open.overrideFor(OperatingSystem.linux, () => DynamicLibrary.open('libsqlite3.so.0'));
-  }
+/// Point d'entrée partagé par les tests Flutter.
+///
+/// SQLite est fourni par les build hooks de package:sqlite3.
+/// Aucun chargement manuel de bibliothèque native n'est nécessaire.
+Future<void> testExecutable(
+  FutureOr<void> Function() testMain,
+) async {
   await testMain();
 }

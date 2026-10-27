@@ -182,7 +182,7 @@ class _StyleRadioTileState extends State<_StyleRadioTile> {
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: _hasFocus ? Colors.white.withOpacity(0.05) : Colors.transparent,
+                color: _hasFocus ? Colors.white.withValues(alpha: 0.05) : Colors.transparent,
                 borderRadius: BorderRadius.circular(12),
                 border: _hasFocus
                     ? Border.all(color: primaryColor, width: 2)

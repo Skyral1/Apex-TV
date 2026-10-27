@@ -8,9 +8,10 @@ import 'package:flauncher/widgets/side_panel_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 
 class NotificationsPanel extends StatelessWidget {
-  const NotificationsPanel({Key? key}) : super(key: key);
+  const NotificationsPanel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class NotificationsPanel extends StatelessWidget {
     final localizations = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.70), // Dim background
+      backgroundColor: Colors.black.withValues(alpha: 0.70), // Dim background
       body: Stack(
         children: [
           // Tap outside to close
@@ -81,7 +82,7 @@ class NotificationsPanel extends StatelessWidget {
                                     ),
                                     backgroundColor: WidgetStateProperty.resolveWith(
                                       (states) => states.contains(WidgetState.focused)
-                                          ? theme.colorScheme.primary.withOpacity(0.3)
+                                          ? theme.colorScheme.primary.withValues(alpha: 0.3)
                                           : Colors.transparent,
                                     ),
                                     side: WidgetStateProperty.resolveWith(
@@ -111,7 +112,7 @@ class NotificationsPanel extends StatelessWidget {
                                   Icon(
                                     Icons.notifications_off_outlined,
                                     size: 64,
-                                    color: theme.hintColor.withOpacity(0.3),
+                                    color: theme.hintColor.withValues(alpha: 0.3),
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
@@ -124,8 +125,7 @@ class NotificationsPanel extends StatelessWidget {
                               ),
                             )
                           : ListView.builder(
-                              cacheExtent: 1000,
-                              itemCount: notifications.length,
+                              scrollCacheExtent: ScrollCacheExtent.pixels(1000), itemCount: notifications.length,
                               itemBuilder: (context, index) {
                                 final notification = notifications[index];
                                 final app = appsService.applications.firstWhereOrNull(
@@ -136,7 +136,7 @@ class NotificationsPanel extends StatelessWidget {
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                                   child: Material(
-                                    color: theme.cardColor.withOpacity(0.5),
+                                    color: theme.cardColor.withValues(alpha: 0.5),
                                     borderRadius: BorderRadius.circular(12),
                                     clipBehavior: Clip.antiAlias,
                                     child: Focus(

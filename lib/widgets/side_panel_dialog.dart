@@ -6,7 +6,7 @@ class SidePanelDialog extends StatelessWidget {
   final double width;
   final bool isRightSide;
 
-  const SidePanelDialog({
+  const SidePanelDialog({super.key, 
     required this.child,
     this.width = 250,
     this.isRightSide = false,
@@ -31,7 +31,7 @@ class SidePanelDialog extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: borderRadius,
             border: Border.all(
-              color: Colors.white.withOpacity(0.08),
+              color: Colors.white.withValues(alpha: 0.08),
               width: 1,
             ),
           ),

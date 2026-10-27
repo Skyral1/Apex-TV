@@ -8,13 +8,13 @@ class FocusableSettingsTile extends StatefulWidget {
   final bool autofocus;
 
   const FocusableSettingsTile({
-    Key? key,
+    super.key,
     required this.title,
     this.leading,
     this.trailing,
     this.onPressed,
     this.autofocus = false,
-  }) : super(key: key);
+  });
 
   @override
   State<FocusableSettingsTile> createState() => _FocusableSettingsTileState();
@@ -50,7 +50,7 @@ class _FocusableSettingsTileState extends State<FocusableSettingsTile> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: _focused ? Colors.white.withOpacity(0.05) : Colors.transparent,
+                color: _focused ? Colors.white.withValues(alpha: 0.05) : Colors.transparent,
                 borderRadius: BorderRadius.circular(12),
                 border: _focused
                     ? Border.all(color: Theme.of(context).colorScheme.primary, width: 2)

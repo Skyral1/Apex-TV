@@ -15,9 +15,9 @@ class ContinueWatchingRow extends StatelessWidget {
   final bool isFirstSection;
 
   const ContinueWatchingRow({
-    Key? key,
+    super.key,
     this.isFirstSection = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +168,7 @@ class WatchNextCard extends StatefulWidget {
   final bool autofocus;
 
   const WatchNextCard({
-    Key? key,
+    super.key,
     required this.program,
     required this.appsService,
     required this.watchNextService,
@@ -176,7 +176,7 @@ class WatchNextCard extends StatefulWidget {
     this.isFirstInRow = false,
     this.isLastInRow = false,
     this.autofocus = false,
-  }) : super(key: key);
+  });
 
   @override
   State<WatchNextCard> createState() => _WatchNextCardState();
@@ -387,7 +387,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
         ? (themes == 'minimal' ? 6 : (themes == 'classic' ? 8 : 16))
         : 0;
     final Color shadowColor = (shouldHighlight && themes == 'glow')
-        ? accentColor.withOpacity(0.85)
+        ? accentColor.withValues(alpha: 0.85)
         : Colors.black;
 
     Widget? highlightWidget;
@@ -440,7 +440,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                     decoration: BoxDecoration(
                       borderRadius: borderRadius,
                       border: Border.all(
-                        color: accentColor.withOpacity(opacity),
+                        color: accentColor.withValues(alpha: opacity),
                         width: 2,
                       ),
                     ),
@@ -451,7 +451,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                       decoration: BoxDecoration(
                         borderRadius: innerBorderRadius,
                         border: Border.all(
-                          color: Colors.black.withOpacity(opacity),
+                          color: Colors.black.withValues(alpha: opacity),
                           width: 2,
                         ),
                       ),
@@ -580,7 +580,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                               ],
                             ),
                             border: Border.all(
-                              color: shouldHighlight ? Colors.transparent : Colors.white.withOpacity(0.06),
+                              color: shouldHighlight ? Colors.transparent : Colors.white.withValues(alpha: 0.06),
                               width: 1,
                             ),
                           ),
@@ -657,7 +657,7 @@ class _WatchNextCardState extends State<WatchNextCard> with TickerProviderStateM
                                   borderRadius: BorderRadius.circular(2),
                                   child: LinearProgressIndicator(
                                     value: progress,
-                                    backgroundColor: Colors.white.withOpacity(0.12),
+                                    backgroundColor: Colors.white.withValues(alpha: 0.12),
                                     valueColor: AlwaysStoppedAnimation<Color>(accentColor),
                                     minHeight: 3.5,
                                   ),

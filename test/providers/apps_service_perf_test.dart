@@ -1,11 +1,9 @@
-import 'package:drift/drift.dart';
 import 'package:flauncher/database.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flauncher/models/category.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../mocks.dart';
 import '../mocks.mocks.dart';
 
 void main() {

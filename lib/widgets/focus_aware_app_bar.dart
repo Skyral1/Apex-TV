@@ -15,7 +15,7 @@ import 'weather_status_bar_widget.dart';
 
 class FocusAwareAppBar extends StatefulWidget implements PreferredSizeWidget
 {
-  const FocusAwareAppBar({Key? key}) : super(key: key);
+  const FocusAwareAppBar({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -76,7 +76,7 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
               child: widget!
             ),
             onFocusChange: (hasFocus) {
-              this.setState(() {
+              setState(() {
                 focused = hasFocus;
               });
             }
@@ -185,10 +185,10 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
                   ? Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(14),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.12),
+                          color: Colors.white.withValues(alpha: 0.12),
                           width: 1,
                         ),
                       ),
@@ -253,10 +253,10 @@ class FocusAwareAppBarState extends State<FocusAwareAppBar>
                       return Container(
                         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.3),
+                          color: Colors.black.withValues(alpha: 0.3),
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(
-                            color: Colors.white.withOpacity(0.12),
+                            color: Colors.white.withValues(alpha: 0.12),
                             width: 1,
                           ),
                         ),
@@ -332,7 +332,7 @@ class _FocusableIconButtonState extends State<_FocusableIconButton> {
           child: Container(
             padding: const EdgeInsets.all(4),  // Match network indicator padding
             decoration: BoxDecoration(
-              color: _focused ? Colors.black.withOpacity(0.3) : Colors.transparent,
+              color: _focused ? Colors.black.withValues(alpha: 0.3) : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
               // Always reserve the border width: a BoxDecoration border adds to the
               // Container's padding, so toggling it between null and 2px would resize

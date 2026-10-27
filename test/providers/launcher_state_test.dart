@@ -63,7 +63,9 @@ void main() {
     testWidgets('handleBackNavigation starts screensaver when action is BACK_BUTTON_ACTION_SCREENSAVER', (WidgetTester tester) async {
       when(mockSettingsService.backButtonAction).thenReturn(BACK_BUTTON_ACTION_SCREENSAVER);
       when(mockAppsService.isDefaultLauncher()).thenAnswer((_) async => true);
-      when(mockAppsService.startAmbientMode()).thenAnswer((_) async {});
+      when(mockAppsService.startAmbientMode()).thenAnswer((_) async {
+        return null;
+      });
 
       // Force refresh
       await launcherState.refresh(mockAppsService);

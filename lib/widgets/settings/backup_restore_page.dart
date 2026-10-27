@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 
 class BackupRestorePage extends StatelessWidget {
   static const String routeName = "backup_restore_panel";
 
-  const BackupRestorePage({Key? key}) : super(key: key);
+  const BackupRestorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -162,8 +163,7 @@ class BackupRestorePage extends StatelessWidget {
                   );
                 }
                 return ListView.builder(
-                  shrinkWrap: true,
-                  cacheExtent: 1000,
+                  scrollCacheExtent: ScrollCacheExtent.pixels(1000), shrinkWrap: true,
                   itemCount: entries.length,
                   itemBuilder: (context, index) {
                     final entry = entries[index];

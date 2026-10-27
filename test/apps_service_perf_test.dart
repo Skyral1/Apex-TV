@@ -10,11 +10,11 @@ void main() {
     int numCategories = 10;
 
     List<AppCategory> appsCategories = [];
-    Map<String, App> _applications = {};
-    Map<int, Category> _categoriesById = {};
+    Map<String, App> applications = {};
+    Map<int, Category> categoriesById = {};
 
     for (int i = 0; i < numCategories; i++) {
-      _categoriesById[i] = Category(
+      categoriesById[i] = Category(
         id: i,
         name: "Cat $i",
         type: CategoryType.grid,
@@ -27,7 +27,7 @@ void main() {
 
     for (int i = 0; i < numApps; i++) {
       String pkg = "com.example.app$i";
-      _applications[pkg] = App(
+      applications[pkg] = App(
         packageName: pkg,
         name: "App $i",
         version: "1.0",
@@ -48,14 +48,14 @@ void main() {
     // Original O(N*M)
     Stopwatch sw = Stopwatch()..start();
     for (int i = 0; i < 100; i++) {
-      for (App application in _applications.values) {
+      for (App application in applications.values) {
         if (appsCategories.isNotEmpty && !application.hidden) {
           Iterable<AppCategory> currentApplicationCategories = appsCategories
               .where((appCategory) => appCategory.appPackageName == application.packageName);
 
           for (AppCategory appCategory in currentApplicationCategories) {
-            if (_categoriesById.containsKey(appCategory.categoryId)) {
-              Category category = _categoriesById[appCategory.categoryId]!;
+            if (categoriesById.containsKey(appCategory.categoryId)) {
+              Category category = categoriesById[appCategory.categoryId]!;
               application.categoryOrders[category.id] = appCategory.order;
             }
           }
@@ -63,7 +63,7 @@ void main() {
       }
     }
     sw.stop();
-    print("Original time: " + sw.elapsedMilliseconds.toString() + " ms");
+    print("Original time: ${sw.elapsedMilliseconds} ms");
 
     // Optimized O(N+M)
     sw.reset();
@@ -76,14 +76,14 @@ void main() {
         }
       }
 
-      for (App application in _applications.values) {
+      for (App application in applications.values) {
         if (appsCategories.isNotEmpty && !application.hidden) {
           List<AppCategory>? currentApplicationCategories = appsCategoriesByPackage[application.packageName];
 
           if (currentApplicationCategories != null) {
             for (AppCategory appCategory in currentApplicationCategories) {
-              if (_categoriesById.containsKey(appCategory.categoryId)) {
-                Category category = _categoriesById[appCategory.categoryId]!;
+              if (categoriesById.containsKey(appCategory.categoryId)) {
+                Category category = categoriesById[appCategory.categoryId]!;
                 application.categoryOrders[category.id] = appCategory.order;
               }
             }
@@ -92,6 +92,6 @@ void main() {
       }
     }
     sw.stop();
-    print("Optimized time: " + sw.elapsedMilliseconds.toString() + " ms");
+    print("Optimized time: ${sw.elapsedMilliseconds} ms");
   });
 }

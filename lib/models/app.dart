@@ -39,9 +39,9 @@ class App
     required this.name,
     required this.version,
     required this.hidden,
-    this.action = null
+    this.action
   }):
-    categoryOrders = Map(),
+    categoryOrders = <int, int>{},
     sideloaded = false;
 
   App.fromSystem(Map<dynamic, dynamic> data):

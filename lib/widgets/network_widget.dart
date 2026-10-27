@@ -153,7 +153,7 @@ class _NetworkIconButtonState extends State<_NetworkIconButton> {
           child: Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: _focused ? Colors.black.withOpacity(0.3) : Colors.transparent,
+              color: _focused ? Colors.black.withValues(alpha: 0.3) : Colors.transparent,
               borderRadius: BorderRadius.circular(8),
               // Constant border width so focus changes never resize the widget.
               border: Border.all(

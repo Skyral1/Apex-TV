@@ -25,11 +25,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 
 import '../../models/category.dart';
 
 class LauncherSectionsPanelPage extends StatefulWidget {
   static const String routeName = "launcher_sections_panel";
+
+  const LauncherSectionsPanelPage({super.key});
 
   @override
   State<LauncherSectionsPanelPage> createState() => _LauncherSectionsPanelPageState();
@@ -87,8 +90,7 @@ class _LauncherSectionsPanelPageState extends State<LauncherSectionsPanelPage> {
 
             return Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.only(bottom: 80),
-                cacheExtent: 1000,
+                scrollCacheExtent: ScrollCacheExtent.pixels(1000), padding: const EdgeInsets.only(bottom: 80),
                 itemCount: displaySections.length,
                 itemBuilder: (context, index) {
                   final section = displaySections[index];
@@ -111,7 +113,7 @@ class _LauncherSectionsPanelPageState extends State<LauncherSectionsPanelPage> {
           child: Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.05),
+              color: Colors.white.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
