@@ -27,18 +27,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/test_display.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("'Gradient' navigates to GradientPanelPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final wallpaperService = MockWallpaperService();
 
@@ -51,6 +47,7 @@ void main() {
 
   group("'Custom'", () {
     testWidgets("opens file explorer if available", (tester) async {
+      configureTestDisplay(tester);
       final settingsService = MockSettingsService();
       final wallpaperService = MockWallpaperService();
 
@@ -62,6 +59,7 @@ void main() {
     });
 
     testWidgets("shows snack bar if not file explorer available", (tester) async {
+      configureTestDisplay(tester);
       final settingsService = MockSettingsService();
       final wallpaperService = MockWallpaperService();
       when(wallpaperService.pickWallpaper()).thenThrow(NoFileExplorerException());

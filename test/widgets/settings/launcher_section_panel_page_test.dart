@@ -26,19 +26,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/test_display.dart';
 import '../../mocks.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("Category is displayed", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     final favoritesCategory =
         fakeCategory(name: "Favorites", sort: CategorySort.alphabetical, type: CategoryType.grid, columnsCount: 6);
@@ -53,6 +49,7 @@ void main() {
   });
 
   testWidgets("'Delete' calls AppsService", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     final favoritesCategory =
         fakeCategory(name: "Favorites", sort: CategorySort.alphabetical, type: CategoryType.row, rowHeight: 110);
@@ -72,6 +69,7 @@ void main() {
   });
 
   testWidgets("Saving a new section returns to the previous page", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([fakeCategory(name: "Favorites")]);
     when(appsService.addSpacer(any)).thenAnswer((_) async {

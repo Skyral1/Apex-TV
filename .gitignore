@@ -72,8 +72,7 @@ Pdoc/
 scratch/
 test/app_card_long_press_test.dart
 
-# Drift Generated Schemas & Mockito Mocks
-drift_schemas/
+# Drift schema snapshots are versioned; only generated Dart helpers are ignored.
 test/generated_migrations/
 test/mocks.mocks.dart
 
