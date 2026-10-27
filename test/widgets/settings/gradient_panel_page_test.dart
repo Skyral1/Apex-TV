@@ -25,18 +25,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/test_display.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("Selecting a gradient calls WallpaperService", (tester) async {
+    configureTestDisplay(tester);
     final wallpaperService = MockWallpaperService();
 
     await _pumpWidgetWithProviders(tester, wallpaperService);

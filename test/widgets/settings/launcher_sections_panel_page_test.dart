@@ -30,19 +30,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/test_display.dart';
 import '../../mocks.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("Categories are displayed", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -56,6 +52,7 @@ void main() {
   });
 
   testWidgets("'Arrow down' change category order", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -77,6 +74,7 @@ void main() {
   });
 
   testWidgets("'Settings' opens LauncherSectionPanelPage", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -92,6 +90,7 @@ void main() {
   });
 
   testWidgets("'Add Section' opens LauncherSectionPanelPage", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -107,6 +106,7 @@ void main() {
   });
 
   testWidgets("Can navigate down past 6 sections using D-pad down", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     final List<LauncherSection> sections = List.generate(10, (i) => fakeCategory(name: "Section $i", order: i));
     when(appsService.launcherSections).thenReturn(sections);
@@ -127,6 +127,7 @@ void main() {
   });
 
   testWidgets("Can navigate down and up through 20 sections using D-pad", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     final List<LauncherSection> sections = List.generate(20, (i) => fakeCategory(name: "Section $i", order: i));
     when(appsService.launcherSections).thenReturn(sections);
@@ -154,6 +155,7 @@ void main() {
   });
 
   testWidgets("Continue watching section is displayed when SettingsService is provided", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -170,6 +172,7 @@ void main() {
   });
 
   testWidgets("Tapping 'Continue Watching' opens ContinueWatchingSettingsPage", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),
@@ -187,6 +190,7 @@ void main() {
   });
 
   testWidgets("'Arrow down' on Continue Watching changes continue watching order", (tester) async {
+    configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([
       fakeCategory(name: "Favorites"),

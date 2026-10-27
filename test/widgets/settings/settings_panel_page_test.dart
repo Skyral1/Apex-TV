@@ -37,18 +37,14 @@ import 'package:package_info_plus_platform_interface/package_info_platform_inter
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:provider/provider.dart';
 
+import '../../helpers/test_display.dart';
 import '../../mocks.mocks.dart';
 
 void main() {
-  setUpAll(() async {
-    final binding = TestWidgetsFlutterBinding.ensureInitialized();
-    binding.window.physicalSizeTestValue = Size(1280, 720);
-    binding.window.devicePixelRatioTestValue = 1.0;
-    // Scale-down the font size because the font 'Ahem' used when running tests is much wider than Roboto
-    binding.platformDispatcher.textScaleFactorTestValue = 0.8;
-  });
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets("'Applications' opens ApplicationsPanelPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -63,6 +59,7 @@ void main() {
   });
 
   testWidgets("'Interface' opens InterfaceSettingsPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -77,6 +74,7 @@ void main() {
   });
 
   testWidgets("'System' opens GeneralSettingsPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -91,6 +89,7 @@ void main() {
   });
 
   testWidgets("'Display & screensaver' opens DisplaySettingsPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -105,6 +104,7 @@ void main() {
   });
 
   testWidgets("'Notifications' opens NotificationsSettingsPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -119,6 +119,7 @@ void main() {
   });
 
   testWidgets("'Accessibility' opens AccessibilityPage", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -133,6 +134,7 @@ void main() {
   });
 
   testWidgets("'Android settings' calls AppsService", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -147,6 +149,7 @@ void main() {
   });
 
   testWidgets("'About LTvLauncher' opens about dialog", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
@@ -163,6 +166,7 @@ void main() {
   });
 
   testWidgets("'Support & Donate' opens donate dialog", (tester) async {
+    configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([]);
