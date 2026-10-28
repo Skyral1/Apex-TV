@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flauncher/database.dart';
@@ -63,7 +64,15 @@ void main() {
       }
     }
     sw.stop();
-    print("Original time: ${sw.elapsedMilliseconds} ms");
+    debugPrint("Original time: ${sw.elapsedMilliseconds} ms");
+
+    final originalOrders = {
+      for (final app in applications.values)
+        app.packageName: Map<int, int>.of(app.categoryOrders),
+    };
+    for (final app in applications.values) {
+      app.categoryOrders.clear();
+    }
 
     // Optimized O(N+M)
     sw.reset();
@@ -92,6 +101,17 @@ void main() {
       }
     }
     sw.stop();
-    print("Optimized time: ${sw.elapsedMilliseconds} ms");
+    debugPrint("Optimized time: ${sw.elapsedMilliseconds} ms");
+    final optimizedOrders = {
+      for (final app in applications.values)
+        app.packageName: Map<int, int>.of(app.categoryOrders),
+    };
+    expect(optimizedOrders, equals(originalOrders));
+    for (var i = 0; i < numApps; i++) {
+      expect(optimizedOrders['com.example.app$i'], {
+        i % numCategories: i,
+        (i + 1) % numCategories: i,
+      });
+    }
   });
 }

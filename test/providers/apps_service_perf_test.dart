@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flauncher/database.dart';
 import 'package:flauncher/models/app.dart';
 import 'package:flauncher/models/category.dart';
@@ -37,8 +38,11 @@ void main() {
     }
 
     stopwatch.stop();
-    print('Baseline logic took: ${stopwatch.elapsedMilliseconds} ms');
-    print('Calls to insertAppsCategories: ${verify(database.insertAppsCategories(any)).callCount}');
+    debugPrint('Baseline logic took: ${stopwatch.elapsedMilliseconds} ms');
+    final baselineCalls = verify(database.insertAppsCategories(any)).callCount;
+    debugPrint('Calls to insertAppsCategories: $baselineCalls');
+    expect(baselineCalls, apps.length);
+    verify(database.nextAppCategoryOrder(tvAppsCategory.id)).called(apps.length);
 
     // Optimized Logic
     clearInteractions(database);
@@ -60,7 +64,16 @@ void main() {
     await database.insertAppsCategories(batch);
 
     stopwatchOptimized.stop();
-    print('Optimized logic took: ${stopwatchOptimized.elapsedMilliseconds} ms');
-    print('Calls to insertAppsCategories: ${verify(database.insertAppsCategories(any)).callCount}');
+    debugPrint('Optimized logic took: ${stopwatchOptimized.elapsedMilliseconds} ms');
+    final optimizedCalls = verify(database.insertAppsCategories(any)).callCount;
+    debugPrint('Calls to insertAppsCategories: $optimizedCalls');
+    expect(optimizedCalls, 1);
+    verify(database.nextAppCategoryOrder(tvAppsCategory.id)).called(1);
+    expect(batch, hasLength(apps.length));
+    for (var i = 0; i < apps.length; i++) {
+      expect(batch[i].categoryId.value, tvAppsCategory.id);
+      expect(batch[i].appPackageName.value, apps[i].packageName);
+      expect(batch[i].order.value, i);
+    }
   });
 }

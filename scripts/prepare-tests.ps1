@@ -34,7 +34,7 @@ try {
     $dart = (Get-Command dart -CommandType Application -ErrorAction Stop).Source
 
     Invoke-CheckedTool -Executable $flutter -ToolArguments @('pub', 'get')
-    Invoke-CheckedTool -Executable $dart -ToolArguments @('run', 'build_runner', 'build', '--delete-conflicting-outputs')
+    Invoke-CheckedTool -Executable $dart -ToolArguments @('run', 'build_runner', 'build')
 
     $mocksPath = Join-Path $repositoryRoot 'test/mocks.mocks.dart'
     if (-not (Test-Path -LiteralPath $mocksPath -PathType Leaf)) {
