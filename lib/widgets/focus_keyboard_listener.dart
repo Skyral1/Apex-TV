@@ -123,6 +123,7 @@ class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {
     } else if (_longPress() && !_longPressFired) {
       _longPressTimer?.cancel();
       _longPressFired = true;
+      _keyDownAt = null;
       return widget.onLongPress?.call(key) ?? KeyEventResult.ignored;
     }
     return KeyEventResult.handled;
