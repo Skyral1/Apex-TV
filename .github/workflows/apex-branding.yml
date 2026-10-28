@@ -64,7 +64,9 @@ jobs:
                   data[key] = re.sub(r'LTvLauncher|FLauncher', 'Apex TV', value, flags=re.IGNORECASE)
               path.write_text(json.dumps(data, ensure_ascii=False, indent=4) + '\n', encoding='utf-8')
               assert '{repoUrl}' in data['textAboutDialog']
-              assert data['@textAboutDialog']['placeholders']['repoUrl']['type'] == 'String'
+              metadata = data.get('@textAboutDialog', {})
+              placeholder = metadata.get('placeholders', {}).get('repoUrl', {})
+              assert placeholder.get('type', 'String') == 'String', f'Unexpected repoUrl type in {path}'
           app = Path('lib/flauncher_app.dart')
           text = app.read_text(encoding='utf-8')
           text, count = re.subn(r"title:\s*'FLauncher'", "title: 'Apex TV'", text)
