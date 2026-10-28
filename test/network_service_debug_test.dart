@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 class MockFlauncherChannel extends Mock implements FLauncherChannel {
   @override
   void addNetworkChangedListener(Function(Map<String, dynamic>) listener) {}
-  
+
   @override
   Future<Map<String, dynamic>> getActiveNetworkInformation() async {
     return {
@@ -27,14 +27,13 @@ void main() {
   test('NetworkService initial load', () async {
     final mockChannel = MockFlauncherChannel();
     final service = NetworkService(mockChannel);
-    
+    addTearDown(service.dispose);
+
     // allow async microtasks to run
     await Future.delayed(Duration(milliseconds: 100));
-    
-    print("Network Type: ${service.networkType}");
-    print("Has Internet: ${service.hasInternetAccess}");
-    print("Signal: ${service.wirelessNetworkSignalLevel}");
-    
-    expect(service.networkType, NetworkType.Wifi);
+
+    expect(service.networkType, NetworkType.wifi);
+    expect(service.hasInternetAccess, isTrue);
+    expect(service.wirelessNetworkSignalLevel, 2);
   });
 }

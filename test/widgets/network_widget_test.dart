@@ -26,8 +26,8 @@ void main() {
   }
 
   testWidgets('renders link_off icon and red color when network state is Unknown', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Unknown);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.unknown);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -42,8 +42,8 @@ void main() {
 
   group('Wifi Network', () {
     testWidgets('renders signal_wifi_0_bar when signal is 0', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -52,8 +52,8 @@ void main() {
     });
 
     testWidgets('renders signal_wifi_1_bar when signal is 1', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(1);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -62,8 +62,8 @@ void main() {
     });
 
     testWidgets('renders signal_wifi_2_bar when signal is 2', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(2);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -72,8 +72,8 @@ void main() {
     });
 
     testWidgets('renders signal_wifi_3_bar when signal is 3', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(3);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -82,8 +82,8 @@ void main() {
     });
 
     testWidgets('renders signal_wifi_4_bar when signal is 4 or higher', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(4);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -94,8 +94,8 @@ void main() {
 
   group('Cellular Network', () {
     testWidgets('renders g_mobiledata for GPRS/EDGE/CDMA', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Gprs);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.gprs);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -104,8 +104,8 @@ void main() {
     });
 
     testWidgets('renders e_mobiledata for EDGE', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Edge);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.edge);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -114,8 +114,8 @@ void main() {
     });
 
     testWidgets('renders h_mobiledata for HSPA/HSDPA/HSUPA', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Hspa);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.hspa);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -124,8 +124,8 @@ void main() {
     });
 
     testWidgets('renders h_plus_mobiledata for HSPAP', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Hspap);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.hspap);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -134,8 +134,8 @@ void main() {
     });
 
     testWidgets('renders three_g_mobiledata for UMTS/TD_SCDMA', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Umts);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.umts);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -144,8 +144,8 @@ void main() {
     });
 
     testWidgets('renders four_g_mobiledata_outlined for LTE', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Lte);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.lte);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -154,8 +154,8 @@ void main() {
     });
 
     testWidgets('renders five_g for NR', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Nr);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.nr);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -164,8 +164,8 @@ void main() {
     });
 
     testWidgets('renders question_mark for other cellular types', (WidgetTester tester) async {
-      when(mockNetworkService.networkType).thenReturn(NetworkType.Cellular);
-      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+      when(mockNetworkService.networkType).thenReturn(NetworkType.cellular);
+      when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
       when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
       await tester.pumpWidget(createWidgetUnderTest());
@@ -175,8 +175,8 @@ void main() {
   });
 
   testWidgets('renders vpn_key when network type is VPN', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Vpn);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.vpn);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -185,8 +185,8 @@ void main() {
   });
 
   testWidgets('renders lan when network type is Wired', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Wired);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.wired);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
 
     await tester.pumpWidget(createWidgetUnderTest());
@@ -195,8 +195,8 @@ void main() {
   });
 
   testWidgets('tapping the widget opens wifi settings', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Unknown);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.unknown);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(0);
     when(mockNetworkService.openWifiSettings()).thenAnswer((_) => Future.value());
 
@@ -209,8 +209,8 @@ void main() {
   });
 
   testWidgets('renders both wifi and vpn_key when wifi is active and vpnActive is true', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(4);
     when(mockNetworkService.vpnActive).thenReturn(true);
 
@@ -221,8 +221,8 @@ void main() {
   });
 
   testWidgets('tapping wifi icon when vpn is active opens wifi settings', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(4);
     when(mockNetworkService.vpnActive).thenReturn(true);
     when(mockNetworkService.openWifiSettings()).thenAnswer((_) => Future.value());
@@ -236,8 +236,8 @@ void main() {
   });
 
   testWidgets('tapping vpn key icon when vpn is active opens vpn settings', (WidgetTester tester) async {
-    when(mockNetworkService.networkType).thenReturn(NetworkType.Wifi);
-    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.Unknown);
+    when(mockNetworkService.networkType).thenReturn(NetworkType.wifi);
+    when(mockNetworkService.cellularNetworkType).thenReturn(CellularNetworkType.unknown);
     when(mockNetworkService.wirelessNetworkSignalLevel).thenReturn(4);
     when(mockNetworkService.vpnActive).thenReturn(true);
     when(mockNetworkService.openVpnSettings()).thenAnswer((_) => Future.value());

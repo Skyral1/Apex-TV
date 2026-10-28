@@ -18,29 +18,29 @@ class NetworkWidget extends StatelessWidget
 
         switch (networkType)
         {
-          case NetworkType.Cellular:
+          case NetworkType.cellular:
             switch (cellularNetworkType)
             {
-              case CellularNetworkType.Cdma || CellularNetworkType.Gsm || CellularNetworkType.Gprs:
+              case CellularNetworkType.cdma || CellularNetworkType.gsm || CellularNetworkType.gprs:
                 physicalIcon = Icons.g_mobiledata;
 
-              case CellularNetworkType.Edge: physicalIcon = Icons.e_mobiledata;
+              case CellularNetworkType.edge: physicalIcon = Icons.e_mobiledata;
 
-              case CellularNetworkType.Hspa || CellularNetworkType.Hsdpa || CellularNetworkType.Hsupa:
+              case CellularNetworkType.hspa || CellularNetworkType.hsdpa || CellularNetworkType.hsupa:
                 physicalIcon = Icons.h_mobiledata;
 
-              case CellularNetworkType.Hspap: physicalIcon = Icons.h_plus_mobiledata;
+              case CellularNetworkType.hspap: physicalIcon = Icons.h_plus_mobiledata;
 
-              case CellularNetworkType.Umts || CellularNetworkType.TdScdma:
+              case CellularNetworkType.umts || CellularNetworkType.tdScdma:
                 physicalIcon = Icons.three_g_mobiledata; break;
 
-              case CellularNetworkType.Lte: physicalIcon = Icons.four_g_mobiledata_outlined; break;
-              case CellularNetworkType.Nr: physicalIcon = Icons.five_g;
+              case CellularNetworkType.lte: physicalIcon = Icons.four_g_mobiledata_outlined; break;
+              case CellularNetworkType.nr: physicalIcon = Icons.five_g;
 
               default: physicalIcon = Icons.question_mark; break;
             }
             break;
-          case NetworkType.Wifi:
+          case NetworkType.wifi:
             if (wirelessSignalLevel == 0) {
               physicalIcon = Icons.signal_wifi_0_bar;
             }
@@ -57,9 +57,9 @@ class NetworkWidget extends StatelessWidget
               physicalIcon = Icons.signal_wifi_4_bar;
             }
             break;
-          case NetworkType.Vpn: physicalIcon = Icons.vpn_key; break;
-          case NetworkType.Wired: physicalIcon = Icons.lan; break;
-          case NetworkType.Unknown: 
+          case NetworkType.vpn: physicalIcon = Icons.vpn_key; break;
+          case NetworkType.wired: physicalIcon = Icons.lan; break;
+          case NetworkType.unknown:
             physicalIcon = Icons.link_off;
             iconColor = Colors.red; // Make no connection icon red
             break;
@@ -80,7 +80,7 @@ class NetworkWidget extends StatelessWidget
         if (!vpnActive || physicalIcon == Icons.vpn_key) {
           return _NetworkIconButton(
             onTap: () {
-              if (vpnActive || networkType == NetworkType.Vpn) {
+              if (vpnActive || networkType == NetworkType.vpn) {
                 networkService.openVpnSettings();
               } else {
                 networkService.openWifiSettings();
