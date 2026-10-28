@@ -1,0 +1,166 @@
+name: Apply Apex TV multilingual branding
+on:
+  push:
+    branches: [feature/apex-home]
+    paths: [.github/workflows/apex-branding.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  branding:
+    if: github.ref == 'refs/heads/feature/apex-home'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/apex-home
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update branding while preserving upstream attribution
+        shell: python
+        run: |
+          import json
+          import re
+          from pathlib import Path
+
+          origins = {
+              'ar': 'المشروع الأصلي والاعتمادات',
+              'de': 'Ursprüngliches Projekt und Mitwirkende',
+              'en': 'Original project and credits',
+              'es': 'Proyecto original y créditos',
+              'fr': 'Projet d’origine et crédits',
+              'hi': 'मूल परियोजना और श्रेय',
+              'it': 'Progetto originale e crediti',
+              'ja': '元のプロジェクトとクレジット',
+              'ko': '원본 프로젝트 및 크레딧',
+              'pt': 'Projeto original e créditos',
+              'ru': 'Исходный проект и авторы',
+              'sl': 'Izvirni projekt in zasluge',
+              'tr': 'Özgün proje ve katkıda bulunanlar',
+              'uk': 'Оригінальний проєкт і автори',
+              'zh': '原始项目与致谢',
+          }
+          root = Path('lib/l10n')
+          paths = sorted(root.glob('app_*.arb'))
+          assert len(paths) == 15, 'Unexpected locale count: inspect before changing files'
+          for path in paths:
+              locale = path.stem.removeprefix('app_')
+              assert locale in origins, f'Unknown locale: {locale}'
+              data = json.loads(path.read_text(encoding='utf-8'))
+              old_about = data['textAboutDialog']
+              marker = 'Apex TV — Skyral1\n'
+              if not old_about.startswith(marker):
+                  upstream = old_about.replace('{repoUrl}', 'https://github.com/leanbitlab-org/LtvLauncher')
+                  data['textAboutDialog'] = (
+                      marker + '{repoUrl}\n\n' + origins[locale] + '\n' + upstream
+                      + '\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher'
+                      + '\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher'
+                      + '\nGNU GPL v3+'
+                  )
+              for key, value in list(data.items()):
+                  if key.startswith('@') or key == 'textAboutDialog' or not isinstance(value, str):
+                      continue
+                  data[key] = re.sub(r'LTvLauncher|FLauncher', 'Apex TV', value, flags=re.IGNORECASE)
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=4) + '\n', encoding='utf-8')
+              assert '{repoUrl}' in data['textAboutDialog']
+              assert data['@textAboutDialog']['placeholders']['repoUrl']['type'] == 'String'
+          app = Path('lib/flauncher_app.dart')
+          text = app.read_text(encoding='utf-8')
+          text, count = re.subn(r"title:\s*'FLauncher'", "title: 'Apex TV'", text)
+          assert count == 1 or "title: 'Apex TV'" in text
+          app.write_text(text, encoding='utf-8')
+          about = Path('lib/widgets/settings/flauncher_about_dialog.dart')
+          previous = about.read_text(encoding='utf-8')
+          header = previous[:previous.index('*/') + 2]
+          body = '''
+          import 'package:apex_tv/flauncher_channel.dart';
+          import 'package:apex_tv/l10n/app_localizations.dart';
+          import 'package:flutter/material.dart';
+          import 'package:package_info_plus/package_info_plus.dart';
+
+          /// Existing class name retained for compatibility with settings.
+          class LTvLauncherAboutDialog extends StatelessWidget {
+            const LTvLauncherAboutDialog({super.key, required this.packageInfo});
+            final PackageInfo packageInfo;
+
+            Future<void> _open(BuildContext context, String url) async {
+              final opened = await FLauncherChannel().openUrl(url);
+              if (!context.mounted || opened) return;
+              ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                SnackBar(content: Text(url)),
+              );
+            }
+
+            @override
+            Widget build(BuildContext context) {
+              final strings = AppLocalizations.of(context)!;
+              return AlertDialog(
+                title: Text(strings.aboutFlauncher),
+                content: SizedBox(
+                  width: 480,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('v${packageInfo.version} (${packageInfo.buildNumber})'),
+                        const SizedBox(height: 16),
+                        Text(strings.textAboutDialog('https://github.com/Skyral1/Apex-TV')),
+                        const SizedBox(height: 16),
+                        TextButton.icon(
+                          autofocus: true,
+                          onPressed: () => _open(context, 'https://github.com/Skyral1/Apex-TV'),
+                          icon: const Icon(Icons.code),
+                          label: const Text('Apex TV — GitHub'),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => _open(context, 'https://github.com/Skyral1/Apex-TV/issues'),
+                          icon: const Icon(Icons.bug_report_outlined),
+                          label: const Text('Apex TV — GitHub Issues'),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => _open(context, 'https://github.com/leanbitlab-org/LtvLauncher'),
+                          icon: const Icon(Icons.history),
+                          label: const Text('LTvLauncher — LeanBitLab'),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => _open(context, 'https://gitlab.com/flauncher/flauncher'),
+                          icon: const Icon(Icons.history),
+                          label: const Text('FLauncher — Étienne Fesser'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(MaterialLocalizations.of(context).closeButtonLabel),
+                  ),
+                ],
+              );
+            }
+          }
+          '''
+          import textwrap
+          about.write_text(header + '\n\n' + textwrap.dedent(body).strip() + '\n', encoding='utf-8')
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Resolve dependencies and regenerate all localizations
+        run: |
+          flutter pub get
+          flutter gen-l10n
+          dart format lib/widgets/settings/flauncher_about_dialog.dart
+      - name: Check changed UI file
+        run: flutter analyze --no-pub lib/widgets/settings/flauncher_about_dialog.dart
+      - name: Commit only branding and localization changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add lib/l10n lib/flauncher_app.dart lib/widgets/settings/flauncher_about_dialog.dart
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix(l10n): prioritize Apex TV in all locales and preserve upstream credits'
+          git push origin HEAD:feature/apex-home
