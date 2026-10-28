@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../flauncher_channel.dart';
+
 /// TV-friendly shortcut tile used to open an HDMI input.
 class HdmiShortcutTile extends StatefulWidget {
   const HdmiShortcutTile({
     super.key,
     required this.label,
-    required this.onPressed,
+    required this.inputId,
   });
 
   final String label;
-  final VoidCallback onPressed;
+  final String inputId;
 
   @override
   State<HdmiShortcutTile> createState() => _HdmiShortcutTileState();
@@ -18,6 +20,26 @@ class HdmiShortcutTile extends StatefulWidget {
 
 class _HdmiShortcutTileState extends State<HdmiShortcutTile> {
   bool _focused = false;
+  bool _launching = false;
+
+  Future<void> _launch() async {
+    if (_launching) return;
+
+    setState(() => _launching = true);
+
+    final channel = FLauncherChannel();
+    final launched = await channel.launchTvInput(widget.inputId);
+
+    if (!mounted) return;
+
+    setState(() => _launching = false);
+
+    if (!launched) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Impossible d’ouvrir ${widget.label}.')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +48,7 @@ class _HdmiShortcutTileState extends State<HdmiShortcutTile> {
         if (event is KeyDownEvent &&
             (event.logicalKey == LogicalKeyboardKey.select ||
                 event.logicalKey == LogicalKeyboardKey.enter)) {
-          widget.onPressed();
+          _launch();
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -57,49 +79,96 @@ class _HdmiShortcutTileState extends State<HdmiShortcutTile> {
         padding: const EdgeInsets.all(18),
         child: Align(
           alignment: Alignment.bottomLeft,
-          child: Text(
-            widget.label,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
+          child: _launching
+              ? const SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2.5),
+                )
+              : Text(
+                  widget.label,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
-          ),
         ),
       ),
     );
   }
 }
 
-/// Horizontal row of HDMI source shortcuts.
+/// Horizontal row of the first available Android TV inputs.
 ///
-/// The launch callbacks are intentionally injected by the caller so this UI
-/// component stays independent from Android platform channels.
-class HdmiShortcutRow extends StatelessWidget {
+/// Input identifiers are provided by Android TV; they are not assumed to be
+/// literally "HDMI1" or "HDMI2".
+class HdmiShortcutRow extends StatefulWidget {
   const HdmiShortcutRow({super.key});
 
   @override
+  State<HdmiShortcutRow> createState() => _HdmiShortcutRowState();
+}
+
+class _HdmiShortcutRowState extends State<HdmiShortcutRow> {
+  final FLauncherChannel _channel = FLauncherChannel();
+  late final Future<List<Map<dynamic, dynamic>>> _inputs;
+
+  @override
+  void initState() {
+    super.initState();
+    _inputs = _channel.getTvInputs();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 20,
-      children: [
-        HdmiShortcutTile(
-          label: 'HDMI 1',
-          onPressed: () => _openHdmiInput(context, 'HDMI1'),
-        ),
-        HdmiShortcutTile(
-          label: 'HDMI 2',
-          onPressed: () => _openHdmiInput(context, 'HDMI2'),
-        ),
-      ],
+    return FutureBuilder<List<Map<dynamic, dynamic>>>(
+      future: _inputs,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const SizedBox(
+            height: 120,
+            child: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        final inputs = snapshot.data ?? const [];
+        final visibleInputs = inputs.take(2).toList();
+
+        if (visibleInputs.isEmpty) {
+          return Text(
+            'Aucune source HDMI détectée.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.white54,
+                ),
+          );
+        }
+
+        return Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          children: [
+            for (final input in visibleInputs)
+              HdmiShortcutTile(
+                inputId: _inputId(input),
+                label: _inputLabel(input),
+              ),
+          ],
+        );
+      },
     );
   }
 
-  void _openHdmiInput(BuildContext context, String inputId) {
-    // Platform-specific input launching will be connected through the existing
-    // launcher channel in a later integration commit.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Ouverture de $inputId à connecter.')),
-    );
+  String _inputId(Map<dynamic, dynamic> input) {
+    final id = input['id'] ?? input['inputId'] ?? '';
+    return id.toString();
+  }
+
+  String _inputLabel(Map<dynamic, dynamic> input) {
+    final label = input['label'] ??
+        input['displayName'] ??
+        input['name'] ??
+        input['id'] ??
+        'Source TV';
+    return label.toString();
   }
 }
