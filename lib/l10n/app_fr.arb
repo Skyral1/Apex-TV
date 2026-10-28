@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "À propos de LTvLauncher",
+    "aboutFlauncher": "À propos de Apex TV",
     "addCategory": "Ajouter une catégorie",
     "addSection": "Ajouter une section",
     "alphabetical": "Alphabétique",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "Animation de transition du sélecteur d'application",
     "sort": "Trier",
     "systemSettings": "Paramètres système",
-    "textAboutDialog": "LTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nProjet d’origine et crédits\nLTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "Choisir le fond d'écran de jour",
     "pickNightWallpaper": "Choisir le fond d'écran de nuit",
     "accessibility": "Accessibilité",
-    "defaultLauncherIsDefault": "LTvLauncher est le lanceur par défaut",
-    "defaultLauncherNotDefault": "LTvLauncher n'est pas le lanceur par défaut",
+    "defaultLauncherIsDefault": "Apex TV est le lanceur par défaut",
+    "defaultLauncherNotDefault": "Apex TV n'est pas le lanceur par défaut",
     "setAsDefaultLauncher": "Définir comme lanceur par défaut",
-    "defaultLauncherDescription": "Lorsqu'il est défini comme lanceur par défaut, le bouton Accueil reviendra toujours à LTvLauncher. La TV démarrera également directement sur LTvLauncher.",
+    "defaultLauncherDescription": "Lorsqu'il est défini comme lanceur par défaut, le bouton Accueil reviendra toujours à Apex TV. La TV démarrera également directement sur Apex TV.",
     "inputs": "Entrées",
     "inputSources": "Sources d'entrée",
     "backupAndRestore": "Sauvegarde et restauration",

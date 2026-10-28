@@ -9,7 +9,7 @@ class AppLocalizationsSl extends AppLocalizations {
   AppLocalizationsSl([String locale = 'sl']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'O programu LTvLauncher';
+  String get aboutFlauncher => 'O programu Apex TV';
 
   @override
   String get addCategory => 'Dodaj kategorijo';
@@ -210,7 +210,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher je prilagojen odprtokodni zaganjalnik za Android TV, ki temelji na FLauncherju.\n\nRazvil LeanBitLab.\nIzvorna koda je na voljo na $repoUrl.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nIzvirni projekt in zasluge\nLTvLauncher je prilagojen odprtokodni zaganjalnik za Android TV, ki temelji na FLauncherju.\n\nRazvil LeanBitLab.\nIzvorna koda je na voljo na https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -257,17 +257,17 @@ class AppLocalizationsSl extends AppLocalizations {
   String get accessibility => 'Dostopnost';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher je privzeti zaganjalnik';
+  String get defaultLauncherIsDefault => 'Apex TV je privzeti zaganjalnik';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher ni privzeti zaganjalnik';
+  String get defaultLauncherNotDefault => 'Apex TV ni privzeti zaganjalnik';
 
   @override
   String get setAsDefaultLauncher => 'Nastavi kot privzeti zaganjalnik';
 
   @override
   String get defaultLauncherDescription =>
-      'Ko je nastavljen kot privzeti zaganjalnik, se s pritiskom na gumb Domov vedno vrnete v LTvLauncher. TV se bo zagnal neposredno v LTvLauncher.';
+      'Ko je nastavljen kot privzeti zaganjalnik, se s pritiskom na gumb Domov vedno vrnete v Apex TV. TV se bo zagnal neposredno v Apex TV.';
 
   @override
   String get inputs => 'Vhodi';

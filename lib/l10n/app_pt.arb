@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "Sobre o LTvLauncher",
+    "aboutFlauncher": "Sobre o Apex TV",
     "addCategory": "Adicionar categoria",
     "addSection": "Adicionar seção",
     "alphabetical": "Alfabético",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "Animação de transição do seletor de apps",
     "sort": "Ordenar",
     "systemSettings": "Configurações do sistema",
-    "textAboutDialog": "O LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nProjeto original e créditos\nO LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "Escolher papel de parede diurno",
     "pickNightWallpaper": "Escolher papel de parede noturno",
     "accessibility": "Acessibilidade",
-    "defaultLauncherIsDefault": "LTvLauncher é o launcher padrão",
-    "defaultLauncherNotDefault": "LTvLauncher não é o launcher padrão",
+    "defaultLauncherIsDefault": "Apex TV é o launcher padrão",
+    "defaultLauncherNotDefault": "Apex TV não é o launcher padrão",
     "setAsDefaultLauncher": "Definir como launcher padrão",
-    "defaultLauncherDescription": "Quando definido como launcher padrão, o botão Home sempre retornará ao LTvLauncher. A TV também iniciará diretamente no LTvLauncher.",
+    "defaultLauncherDescription": "Quando definido como launcher padrão, o botão Home sempre retornará ao Apex TV. A TV também iniciará diretamente no Apex TV.",
     "inputs": "Entradas",
     "inputSources": "Fontes de entrada",
     "backupAndRestore": "Backup e Restauração",

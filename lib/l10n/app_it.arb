@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "Informazioni su LTvLauncher",
+    "aboutFlauncher": "Informazioni su Apex TV",
     "addCategory": "Aggiungi categoria",
     "addSection": "Aggiungi sezione",
     "alphabetical": "Alfabetico",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "Animazione transizione selettore app",
     "sort": "Ordina",
     "systemSettings": "Impostazioni di sistema",
-    "textAboutDialog": "LTvLauncher è un launcher open-source personalizzato per Android TV, basato su FLauncher.\n\nSviluppato da LeanBitLab.\nCodice sorgente disponibile su {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nProgetto originale e crediti\nLTvLauncher è un launcher open-source personalizzato per Android TV, basato su FLauncher.\n\nSviluppato da LeanBitLab.\nCodice sorgente disponibile su https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "Scegli sfondo diurno",
     "pickNightWallpaper": "Scegli sfondo notturno",
     "accessibility": "Accessibilità",
-    "defaultLauncherIsDefault": "LTvLauncher è il launcher predefinito",
-    "defaultLauncherNotDefault": "LTvLauncher non è il launcher predefinito",
+    "defaultLauncherIsDefault": "Apex TV è il launcher predefinito",
+    "defaultLauncherNotDefault": "Apex TV non è il launcher predefinito",
     "setAsDefaultLauncher": "Imposta come launcher predefinito",
-    "defaultLauncherDescription": "Quando impostato come launcher predefinito, il pulsante Home tornerà sempre a LTvLauncher. La TV si avvierà direttamente su LTvLauncher.",
+    "defaultLauncherDescription": "Quando impostato come launcher predefinito, il pulsante Home tornerà sempre a Apex TV. La TV si avvierà direttamente su Apex TV.",
     "inputs": "Ingressi",
     "inputSources": "Sorgenti di ingresso",
     "backupAndRestore": "Backup e Ripristino",

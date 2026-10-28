@@ -9,7 +9,7 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'LTvLauncher Hakkında';
+  String get aboutFlauncher => 'Apex TV Hakkında';
 
   @override
   String get addCategory => 'Kategori ekle';
@@ -209,7 +209,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nLeanBitLab tarafından geliştirilmiştir.\nKaynak kodu $repoUrl adresinde mevcuttur.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nÖzgün proje ve katkıda bulunanlar\nLTvLauncher, FLauncher tabanlı, Android TV için özelleştirilmiş açık kaynaklı bir başlatıcıdır.\n\nLeanBitLab tarafından geliştirilmiştir.\nKaynak kodu https://github.com/leanbitlab-org/LtvLauncher adresinde mevcuttur.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -256,18 +256,18 @@ class AppLocalizationsTr extends AppLocalizations {
   String get accessibility => 'Erişilebilirlik';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher varsayılan başlatıcıdır';
+  String get defaultLauncherIsDefault => 'Apex TV varsayılan başlatıcıdır';
 
   @override
   String get defaultLauncherNotDefault =>
-      'LTvLauncher varsayılan başlatıcı değildir';
+      'Apex TV varsayılan başlatıcı değildir';
 
   @override
   String get setAsDefaultLauncher => 'Varsayılan başlatıcı olarak ayarla';
 
   @override
   String get defaultLauncherDescription =>
-      'Varsayılan başlatıcı olarak ayarlandığında, Ana Sayfa düğmesi her zaman LTvLauncher\'a döner. TV de doğrudan LTvLauncher\'da başlar.';
+      'Varsayılan başlatıcı olarak ayarlandığında, Ana Sayfa düğmesi her zaman Apex TV\'a döner. TV de doğrudan Apex TV\'da başlar.';
 
   @override
   String get inputs => 'Girişler';

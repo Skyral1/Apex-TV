@@ -9,7 +9,7 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'À propos de LTvLauncher';
+  String get aboutFlauncher => 'À propos de Apex TV';
 
   @override
   String get addCategory => 'Ajouter une catégorie';
@@ -213,7 +213,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur $repoUrl.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nProjet d’origine et crédits\nLTvLauncher est un lanceur open-source personnalisé pour Android TV, basé sur FLauncher.\n\nDéveloppé par LeanBitLab.\nCode source disponible sur https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -260,19 +260,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get accessibility => 'Accessibilité';
 
   @override
-  String get defaultLauncherIsDefault =>
-      'LTvLauncher est le lanceur par défaut';
+  String get defaultLauncherIsDefault => 'Apex TV est le lanceur par défaut';
 
   @override
   String get defaultLauncherNotDefault =>
-      'LTvLauncher n\'est pas le lanceur par défaut';
+      'Apex TV n\'est pas le lanceur par défaut';
 
   @override
   String get setAsDefaultLauncher => 'Définir comme lanceur par défaut';
 
   @override
   String get defaultLauncherDescription =>
-      'Lorsqu\'il est défini comme lanceur par défaut, le bouton Accueil reviendra toujours à LTvLauncher. La TV démarrera également directement sur LTvLauncher.';
+      'Lorsqu\'il est défini comme lanceur par défaut, le bouton Accueil reviendra toujours à Apex TV. La TV démarrera également directement sur Apex TV.';
 
   @override
   String get inputs => 'Entrées';

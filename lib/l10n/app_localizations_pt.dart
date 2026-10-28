@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'Sobre o LTvLauncher';
+  String get aboutFlauncher => 'Sobre o Apex TV';
 
   @override
   String get addCategory => 'Adicionar categoria';
@@ -211,7 +211,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'O LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em $repoUrl.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nProjeto original e créditos\nO LTvLauncher é um launcher open-source personalizado para Android TV, baseado no FLauncher.\n\nDesenvolvido por LeanBitLab.\nCódigo-fonte disponível em https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -258,17 +258,17 @@ class AppLocalizationsPt extends AppLocalizations {
   String get accessibility => 'Acessibilidade';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncher é o launcher padrão';
+  String get defaultLauncherIsDefault => 'Apex TV é o launcher padrão';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncher não é o launcher padrão';
+  String get defaultLauncherNotDefault => 'Apex TV não é o launcher padrão';
 
   @override
   String get setAsDefaultLauncher => 'Definir como launcher padrão';
 
   @override
   String get defaultLauncherDescription =>
-      'Quando definido como launcher padrão, o botão Home sempre retornará ao LTvLauncher. A TV também iniciará diretamente no LTvLauncher.';
+      'Quando definido como launcher padrão, o botão Home sempre retornará ao Apex TV. A TV também iniciará diretamente no Apex TV.';
 
   @override
   String get inputs => 'Entradas';

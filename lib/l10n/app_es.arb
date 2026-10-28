@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "Acerca de LTvLauncher",
+    "aboutFlauncher": "Acerca de Apex TV",
     "addCategory": "Agregar categoría",
     "addSection": "Agregar sección",
     "alphabetical": "Alfabético",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "Animación de transición del selector de aplicaciones",
     "sort": "Orden",
     "systemSettings": "Ajustes del sistema",
-    "textAboutDialog": "LTvLauncher es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por LeanBitLab.\nCódigo fuente disponible en {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nProyecto original y créditos\nLTvLauncher es un lanzador de código abierto personalizado para Android TV, basado en FLauncher.\n\nDesarrollado por LeanBitLab.\nCódigo fuente disponible en https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "Elegir fondo de pantalla diurno",
     "pickNightWallpaper": "Elegir fondo de pantalla nocturno",
     "accessibility": "Accesibilidad",
-    "defaultLauncherIsDefault": "LTvLauncher es el lanzador predeterminado",
-    "defaultLauncherNotDefault": "LTvLauncher no es el lanzador predeterminado",
+    "defaultLauncherIsDefault": "Apex TV es el lanzador predeterminado",
+    "defaultLauncherNotDefault": "Apex TV no es el lanzador predeterminado",
     "setAsDefaultLauncher": "Establecer como lanzador predeterminado",
-    "defaultLauncherDescription": "Cuando se establece como lanzador predeterminado, el botón de inicio siempre regresará a LTvLauncher. El TV también iniciará directamente en LTvLauncher.",
+    "defaultLauncherDescription": "Cuando se establece como lanzador predeterminado, el botón de inicio siempre regresará a Apex TV. El TV también iniciará directamente en Apex TV.",
     "inputs": "Entradas",
     "inputSources": "Fuentes de Entrada",
     "backupAndRestore": "Copia de seguridad y restauración",

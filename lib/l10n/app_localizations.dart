@@ -127,7 +127,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutFlauncher.
   ///
   /// In en, this message translates to:
-  /// **'About LTvLauncher'**
+  /// **'About Apex TV'**
   String get aboutFlauncher;
 
   /// No description provided for @addCategory.
@@ -499,7 +499,7 @@ abstract class AppLocalizations {
   /// No description provided for @textAboutDialog.
   ///
   /// In en, this message translates to:
-  /// **'LTvLauncher is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by LeanBitLab.\nSource code available at {repoUrl}.'**
+  /// **'Apex TV — Skyral1\n{repoUrl}\n\nOriginal project and credits\nLTvLauncher is a customized open-source launcher for Android TV, based on FLauncher.\n\nDeveloped by LeanBitLab.\nSource code available at https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+'**
   String textAboutDialog(String repoUrl);
 
   /// No description provided for @textEmptyCategory.
@@ -589,13 +589,13 @@ abstract class AppLocalizations {
   /// No description provided for @defaultLauncherIsDefault.
   ///
   /// In en, this message translates to:
-  /// **'LTvLauncher is the default launcher'**
+  /// **'Apex TV is the default launcher'**
   String get defaultLauncherIsDefault;
 
   /// No description provided for @defaultLauncherNotDefault.
   ///
   /// In en, this message translates to:
-  /// **'LTvLauncher is not the default launcher'**
+  /// **'Apex TV is not the default launcher'**
   String get defaultLauncherNotDefault;
 
   /// No description provided for @setAsDefaultLauncher.
@@ -607,7 +607,7 @@ abstract class AppLocalizations {
   /// No description provided for @defaultLauncherDescription.
   ///
   /// In en, this message translates to:
-  /// **'When set as the default launcher, the Home button will always return to LTvLauncher. The TV will also boot directly into LTvLauncher.'**
+  /// **'When set as the default launcher, the Home button will always return to Apex TV. The TV will also boot directly into Apex TV.'**
   String get defaultLauncherDescription;
 
   /// No description provided for @inputs.

@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "Über LTvLauncher",
+    "aboutFlauncher": "Über Apex TV",
     "addCategory": "Kategorie hinzufügen",
     "addSection": "Abschnitt hinzufügen",
     "alphabetical": "Alphabetisch",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "App-Auswahl-Übergangsanimation",
     "sort": "Sortieren",
     "systemSettings": "Systemeinstellungen",
-    "textAboutDialog": "LTvLauncher ist ein angepasster Open-Source-Launcher für Android TV, basierend auf FLauncher.\n\nEntwickelt von LeanBitLab.\nQuellcode verfügbar unter {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nUrsprüngliches Projekt und Mitwirkende\nLTvLauncher ist ein angepasster Open-Source-Launcher für Android TV, basierend auf FLauncher.\n\nEntwickelt von LeanBitLab.\nQuellcode verfügbar unter https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "Tag-Hintergrundbild auswählen",
     "pickNightWallpaper": "Nacht-Hintergrundbild auswählen",
     "accessibility": "Barrierefreiheit",
-    "defaultLauncherIsDefault": "LTvLauncher ist der Standard-Launcher",
-    "defaultLauncherNotDefault": "LTvLauncher ist nicht der Standard-Launcher",
+    "defaultLauncherIsDefault": "Apex TV ist der Standard-Launcher",
+    "defaultLauncherNotDefault": "Apex TV ist nicht der Standard-Launcher",
     "setAsDefaultLauncher": "Als Standard-Launcher festlegen",
-    "defaultLauncherDescription": "Wenn als Standard-Launcher festgelegt, kehrt die Home-Taste immer zu LTvLauncher zurück. Der TV bootet ebenfalls direkt in LTvLauncher.",
+    "defaultLauncherDescription": "Wenn als Standard-Launcher festgelegt, kehrt die Home-Taste immer zu Apex TV zurück. Der TV bootet ebenfalls direkt in Apex TV.",
     "inputs": "Eingänge",
     "inputSources": "Eingabequellen",
     "backupAndRestore": "Sichern & Wiederherstellen",

@@ -1,5 +1,5 @@
 {
-    "aboutFlauncher": "حول LTvLauncher",
+    "aboutFlauncher": "حول Apex TV",
     "addCategory": "إضافة فئة",
     "addSection": "إضافة قسم",
     "alphabetical": "أبجدي",
@@ -89,7 +89,7 @@
     "appSelectorTransitionAnimation": "رسوم متحركة لانتقال محدد التطبيقات",
     "sort": "فرز",
     "systemSettings": "إعدادات النظام",
-    "textAboutDialog": "LTvLauncher هو مشغل مفتوح المصدر ومخصص لتلفزيون أندرويد، مبني على FLauncher.\n\nتم تطويره بواسطة LeanBitLab.\nالكود المصدري متاح على {repoUrl}.",
+    "textAboutDialog": "Apex TV — Skyral1\n{repoUrl}\n\nالمشروع الأصلي والاعتمادات\nLTvLauncher هو مشغل مفتوح المصدر ومخصص لتلفزيون أندرويد، مبني على FLauncher.\n\nتم تطويره بواسطة LeanBitLab.\nالكود المصدري متاح على https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+",
     "@textAboutDialog": {
         "placeholders": {
             "repoUrl": {
@@ -111,10 +111,10 @@
     "pickDayWallpaper": "اختيار خلفية النهار",
     "pickNightWallpaper": "اختيار خلفية الليل",
     "accessibility": "إمكانية الوصول",
-    "defaultLauncherIsDefault": "LTvLauncher هو المشغل الافتراضي",
-    "defaultLauncherNotDefault": "LTvLauncher ليس المشغل الافتراضي",
+    "defaultLauncherIsDefault": "Apex TV هو المشغل الافتراضي",
+    "defaultLauncherNotDefault": "Apex TV ليس المشغل الافتراضي",
     "setAsDefaultLauncher": "تعيين كمشغل افتراضي",
-    "defaultLauncherDescription": "عند تعيينه كمشغل افتراضي، سيعود زر الصفحة الرئيسية دائماً إلى LTvLauncher. سيتم أيضاً تشغيل التلفزيون مباشرة في LTvLauncher.",
+    "defaultLauncherDescription": "عند تعيينه كمشغل افتراضي، سيعود زر الصفحة الرئيسية دائماً إلى Apex TV. سيتم أيضاً تشغيل التلفزيون مباشرة في Apex TV.",
     "inputs": "المدخلات",
     "inputSources": "مصادر الإدخال",
     "backupAndRestore": "النسخ الاحتياطي والاستعادة",

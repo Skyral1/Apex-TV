@@ -9,7 +9,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'О программе LTvLauncher';
+  String get aboutFlauncher => 'О программе Apex TV';
 
   @override
   String get addCategory => 'Добавить категорию';
@@ -210,7 +210,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher — это настраиваемый лаунчер с открытым исходным кодом для Android TV, основанный на FLauncher.\n\nРазработан LeanBitLab.\nИсходный код доступен по адресу $repoUrl.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nИсходный проект и авторы\nLTvLauncher — это настраиваемый лаунчер с открытым исходным кодом для Android TV, основанный на FLauncher.\n\nРазработан LeanBitLab.\nИсходный код доступен по адресу https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -258,18 +258,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get defaultLauncherIsDefault =>
-      'LTvLauncher является лаунчером по умолчанию';
+      'Apex TV является лаунчером по умолчанию';
 
   @override
   String get defaultLauncherNotDefault =>
-      'LTvLauncher не является лаунчером по умолчанию';
+      'Apex TV не является лаунчером по умолчанию';
 
   @override
   String get setAsDefaultLauncher => 'Установить как лаунчер по умолчанию';
 
   @override
   String get defaultLauncherDescription =>
-      'При установке в качестве лаунчера по умолчанию кнопка «Домой» всегда будет возвращать к LTvLauncher. ТВ также будет загружаться напрямую в LTvLauncher.';
+      'При установке в качестве лаунчера по умолчанию кнопка «Домой» всегда будет возвращать к Apex TV. ТВ также будет загружаться напрямую в Apex TV.';
 
   @override
   String get inputs => 'Входы';

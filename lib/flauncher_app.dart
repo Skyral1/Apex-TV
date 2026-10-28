@@ -76,7 +76,7 @@ class FLauncherApp extends StatelessWidget
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       localeListResolutionCallback: resolveAppLocale,
-      title: 'FLauncher',
+      title: 'Apex TV',
         theme: ThemeData(
           useMaterial3: true,
           brightness: Brightness.dark,

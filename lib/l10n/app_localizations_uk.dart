@@ -9,7 +9,7 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'Про LTvLauncher';
+  String get aboutFlauncher => 'Про Apex TV';
 
   @override
   String get addCategory => 'Додати категорію';
@@ -209,7 +209,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncher — це налаштований лаунчер з відкритим кодом для Android TV, створений на основі FLauncher.\n\nРозроблено LeanBitLab.\nВихідний код доступний за адресою $repoUrl.';
+    return 'Apex TV — Skyral1\n$repoUrl\n\nОригінальний проєкт і автори\nLTvLauncher — це налаштований лаунчер з відкритим кодом для Android TV, створений на основі FLauncher.\n\nРозроблено LeanBitLab.\nВихідний код доступний за адресою https://github.com/leanbitlab-org/LtvLauncher.\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -256,19 +256,18 @@ class AppLocalizationsUk extends AppLocalizations {
   String get accessibility => 'Спеціальні можливості';
 
   @override
-  String get defaultLauncherIsDefault =>
-      'LTvLauncher є лаунчером за замовчуванням';
+  String get defaultLauncherIsDefault => 'Apex TV є лаунчером за замовчуванням';
 
   @override
   String get defaultLauncherNotDefault =>
-      'LTvLauncher не є лаунчером за замовчуванням';
+      'Apex TV не є лаунчером за замовчуванням';
 
   @override
   String get setAsDefaultLauncher => 'Встановити як лаунчер за замовчуванням';
 
   @override
   String get defaultLauncherDescription =>
-      'Якщо встановлено як лаунчер за замовчуванням, кнопка «Домівка» завжди повертатиме до LTvLauncher. Телевізор також завантажуватиметься одразу в LTvLauncher.';
+      'Якщо встановлено як лаунчер за замовчуванням, кнопка «Домівка» завжди повертатиме до Apex TV. Телевізор також завантажуватиметься одразу в Apex TV.';
 
   @override
   String get inputs => 'Джерела сигналу';

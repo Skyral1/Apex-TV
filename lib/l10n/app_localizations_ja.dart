@@ -9,7 +9,7 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get aboutFlauncher => 'LTvLauncherについて';
+  String get aboutFlauncher => 'Apex TVについて';
 
   @override
   String get addCategory => 'カテゴリを追加';
@@ -204,7 +204,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String textAboutDialog(String repoUrl) {
-    return 'LTvLauncherはFLauncherをベースにしたAndroid TV用のカスタムオープンソースランチャーです。\n\nLeanBitLabによって開発されています。\nソースコードは$repoUrlで入手できます。';
+    return 'Apex TV — Skyral1\n$repoUrl\n\n元のプロジェクトとクレジット\nLTvLauncherはFLauncherをベースにしたAndroid TV用のカスタムオープンソースランチャーです。\n\nLeanBitLabによって開発されています。\nソースコードはhttps://github.com/leanbitlab-org/LtvLauncherで入手できます。\n\nLTvLauncher — LeanBitLab\nhttps://github.com/leanbitlab-org/LtvLauncher\nFLauncher — Étienne Fesser\nhttps://gitlab.com/flauncher/flauncher\nGNU GPL v3+';
   }
 
   @override
@@ -250,17 +250,17 @@ class AppLocalizationsJa extends AppLocalizations {
   String get accessibility => 'アクセシビリティ';
 
   @override
-  String get defaultLauncherIsDefault => 'LTvLauncherはデフォルトのランチャーです';
+  String get defaultLauncherIsDefault => 'Apex TVはデフォルトのランチャーです';
 
   @override
-  String get defaultLauncherNotDefault => 'LTvLauncherはデフォルトのランチャーではありません';
+  String get defaultLauncherNotDefault => 'Apex TVはデフォルトのランチャーではありません';
 
   @override
   String get setAsDefaultLauncher => 'デフォルトのランチャーに設定';
 
   @override
   String get defaultLauncherDescription =>
-      'デフォルトのランチャーに設定すると、ホームボタンは常にLTvLauncherに戻ります。TVの起動時も直接LTvLauncherが起動します。';
+      'デフォルトのランチャーに設定すると、ホームボタンは常にApex TVに戻ります。TVの起動時も直接Apex TVが起動します。';
 
   @override
   String get inputs => '入力';
