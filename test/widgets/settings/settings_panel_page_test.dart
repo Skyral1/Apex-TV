@@ -148,7 +148,7 @@ void main() {
     verify(appsService.openSettings());
   });
 
-  testWidgets("'About LTvLauncher' opens about dialog", (tester) async {
+  testWidgets("'About Apex TV' opens about dialog", (tester) async {
     configureTestDisplay(tester);
     final settingsService = MockSettingsService();
     final appsService = MockAppsService();
@@ -160,7 +160,7 @@ void main() {
 
     await _pumpWidgetWithProviders(tester, settingsService, appsService);
 
-    await tester.tap(find.text("About LTvLauncher"));
+    await tester.tap(find.text("About Apex TV"));
     await tester.pumpAndSettle();
     expect(find.byType(LTvLauncherAboutDialog), findsOneWidget);
   });
@@ -194,6 +194,7 @@ Future<void> _pumpWidgetWithProviders(
         ChangeNotifierProvider<AppsService>.value(value: appsService),
       ],
       builder: (_, __) => MaterialApp(
+        locale: const Locale('en'),
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -218,8 +219,8 @@ Future<void> _pumpWidgetWithProviders(
 class _MockPackageInfoPlatform with MockPlatformInterfaceMixin implements PackageInfoPlatform {
   @override
   Future<PackageInfoData> getAll({String? baseUrl}) async => PackageInfoData(
-        appName: "LTvLauncher",
-        packageName: "com.leanbitlab.ltvL",
+        appName: "Apex TV",
+        packageName: "be.skyral.apextv",
         version: "1.0.0",
         buildNumber: "1",
         buildSignature: "",

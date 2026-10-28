@@ -34,6 +34,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: settingsService),
         ],
         builder: (_, __) => MaterialApp(
+          locale: const Locale('en'),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -48,7 +49,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text("Accessibility"), findsOneWidget);
-    expect(find.text("LTvLauncher is the default launcher"), findsOneWidget);
+    expect(find.text("Apex TV is the default launcher"), findsOneWidget);
     expect(find.text("Set as default launcher"), findsOneWidget);
   });
 
@@ -72,6 +73,7 @@ void main() {
           ChangeNotifierProvider<SettingsService>.value(value: settingsService),
         ],
         builder: (_, __) => MaterialApp(
+          locale: const Locale('en'),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -86,8 +88,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text("Accessibility"), findsOneWidget);
-    expect(
-        find.text("LTvLauncher is not the default launcher"), findsOneWidget);
+    expect(find.text("Apex TV is not the default launcher"), findsOneWidget);
   });
 }
 
