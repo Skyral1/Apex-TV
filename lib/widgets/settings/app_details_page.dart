@@ -66,6 +66,7 @@ class AppDetailsPage extends StatelessWidget {
                 title: localizations.open,
                 onTap: () async {
                   await appsService.launchApp(application);
+                  if (!context.mounted) return;
                   Navigator.of(context).pop(); // Close settings after launch? Or stay? Dialog behavior was close.
                 },
               ),
@@ -110,6 +111,7 @@ class AppDetailsPage extends StatelessWidget {
                 title: localizations.uninstall,
                 onTap: () async {
                     await appsService.uninstallApp(application);
+                    if (!context.mounted) return;
                     Navigator.of(context).pop();
                 },
               ),

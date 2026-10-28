@@ -35,7 +35,7 @@ class FocusKeyboardListener extends StatefulWidget {
   });
 
   @override
-  _FocusKeyboardListenerState createState() => _FocusKeyboardListenerState();
+  State<FocusKeyboardListener> createState() => _FocusKeyboardListenerState();
 }
 
 class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {

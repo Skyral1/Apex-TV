@@ -139,6 +139,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                      ),
                      onPressed: () async {
                        await context.read<AppsService>().launchApp(widget.application);
+                       if (!context.mounted) return;
                        Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                      },
                    ),
@@ -163,6 +164,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                          ),
                          onPressed: () async {
                            await appsService.toggleFavorite(widget.application);
+                           if (!context.mounted) return;
                            Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                          },
                        );
@@ -182,6 +184,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                        } else {
                          await context.read<AppsService>().hideApplication(widget.application);
                        }
+                       if (!context.mounted) return;
                        Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                      },
                    ),
@@ -206,6 +209,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                          if (cat != null) {
                            await context.read<AppsService>().removeFromCategory(widget.application, cat);
                          }
+                         if (!context.mounted) return;
                          Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                        },
                      ),
@@ -238,7 +242,9 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                                    await File(pickedFile.path).copy(savedImage.path);
                                    // Clean up temp file from ImagePicker
                                    await File(pickedFile.path).delete();
+                                   if (!mounted || !context.mounted) return;
                                    await context.read<AppsService>().setCustomAppBanner(widget.application.packageName, savedImage.path);
+                                   if (!mounted || !context.mounted) return;
                                    // Refresh the future to reflect the change
                                    setState(() {
                                      _hasCustomBannerFuture = context.read<AppsService>()
@@ -267,6 +273,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                                onPressed: () async {
                                  try {
                                    await context.read<AppsService>().removeCustomAppBanner(widget.application.packageName);
+                                   if (!mounted || !context.mounted) return;
                                    // Refresh the future to reflect the change
                                    setState(() {
                                      _hasCustomBannerFuture = context.read<AppsService>()
@@ -307,6 +314,7 @@ class _ApplicationInfoPanelState extends State<ApplicationInfoPanel>
                      ),
                      onPressed: () async {
                        await context.read<AppsService>().uninstallApp(widget.application);
+                       if (!context.mounted) return;
                        Navigator.of(context).pop(ApplicationInfoPanelResult.none);
                      },
                    )
