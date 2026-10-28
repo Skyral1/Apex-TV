@@ -1,62 +1,81 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 import '../date_time_widget.dart';
 import '../network_widget.dart';
 import 'hdmi_shortcut_row.dart';
 
-/// Minimal Apex TV home screen.
-///
-/// This widget is intentionally standalone for the first iteration: it can be
-/// embedded in the existing launcher shell without replacing its navigation or
-/// database layer.
+/// Full-screen preview; never replaces the existing launcher route.
 class ApexHomeScreen extends StatelessWidget {
   const ApexHomeScreen({super.key});
 
+  static String previewLabel(BuildContext context) {
+    const labels = {
+      'ar': 'معاينة Apex Home',
+      'de': 'Apex Home Vorschau',
+      'en': 'Apex Home preview',
+      'es': 'Vista previa de Apex Home',
+      'fr': 'Aperçu Apex Home',
+      'hi': 'Apex Home पूर्वावलोकन',
+      'it': 'Anteprima Apex Home',
+      'ja': 'Apex Home プレビュー',
+      'ko': 'Apex Home 미리보기',
+      'pt': 'Pré-visualização do Apex Home',
+      'ru': 'Предпросмотр Apex Home',
+      'sl': 'Predogled Apex Home',
+      'tr': 'Apex Home önizlemesi',
+      'uk': 'Попередній перегляд Apex Home',
+      'zh': 'Apex Home 预览',
+    };
+    return labels[Localizations.localeOf(context).languageCode] ?? labels['en']!;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Scaffold(
-      backgroundColor: const Color(0xFF0B0F14),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(48, 32, 48, 32),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    void close() => Navigator.of(context).pop();
+    return CallbackShortcuts(
+      bindings: {
+        const SingleActivator(LogicalKeyboardKey.escape): close,
+        const SingleActivator(LogicalKeyboardKey.goBack): close,
+        const SingleActivator(LogicalKeyboardKey.gameButtonB): close,
+      },
+      child: Scaffold(
+        key: const Key('apexHomePreview'),
+        backgroundColor: const Color(0xFF0B0F14),
+        body: SafeArea(
+          child: FocusTraversalGroup(
+            policy: ReadingOrderTraversalPolicy(),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const DateTimeWidget('EEE d MMM • HH:mm'),
-                  const NetworkWidget(),
+                  Row(
+                    children: [
+                      TextButton.icon(
+                        key: const Key('apexHomeBack'),
+                        autofocus: true,
+                        onPressed: close,
+                        icon: const Icon(Icons.arrow_back),
+                        label: Text(MaterialLocalizations.of(context).backButtonTooltip),
+                      ),
+                      const Spacer(),
+                      const DateTimeWidget('EEE d MMM • HH:mm', animate: false),
+                      const SizedBox(width: 20),
+                      const NetworkWidget(),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  Text('Apex TV', style: Theme.of(context).textTheme.headlineMedium),
+                  const SizedBox(height: 8),
+                  Text(previewLabel(context)),
+                  const SizedBox(height: 32),
+                  Text(AppLocalizations.of(context)!.inputSources, style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 16),
+                  const HdmiShortcutRow(),
                 ],
               ),
-              const SizedBox(height: 40),
-              Text(
-                'Apex TV',
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Votre launcher, sans distraction.',
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: Colors.white70,
-                ),
-              ),
-              const SizedBox(height: 40),
-              const HdmiShortcutRow(),
-              const Spacer(),
-              Text(
-                'Utilisez la télécommande pour naviguer.',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: Colors.white38,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
