@@ -9,13 +9,13 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-
+import 'package:apex_tv/apex_nav_trace.dart';
 import 'package:apex_tv/flauncher_channel.dart';
 import 'package:apex_tv/providers/apps_service.dart';
 import 'package:apex_tv/providers/launcher_state.dart';
@@ -26,13 +26,10 @@ import 'package:provider/provider.dart';
 
 class SoundFeedbackDirectionalFocusAction extends DirectionalFocusAction {
   final BuildContext context;
-
   SoundFeedbackDirectionalFocusAction(this.context);
-
   @override
   void invoke(DirectionalFocusIntent intent) {
     super.invoke(intent);
-
     SettingsService settingsService = context.read<SettingsService>();
     if (settingsService.appKeyClickEnabled) {
       FLauncherChannel().playClickSound();
@@ -41,7 +38,6 @@ class SoundFeedbackDirectionalFocusAction extends DirectionalFocusAction {
       silentForTap(context);
     }
   }
-
   /// copied from Feedback.forTap, omitting playing a sound
   static void silentForTap(BuildContext context) async {
     context.findRenderObject()!.sendSemanticsEvent(const TapSemanticEvent());
@@ -50,17 +46,20 @@ class SoundFeedbackDirectionalFocusAction extends DirectionalFocusAction {
 
 class BackAction extends Action<BackIntent> {
   final BuildContext context;
-
   BackAction(this.context);
-
   @override
   Future<void> invoke(BackIntent intent) async {
+    ApexNavTrace.write('BackAction.invoke', context: context);
     NavigatorState? navigator = Navigator.maybeOf(context);
-
     if (navigator != null) {
-      navigator.maybePop();
-    }
-    else {
+      final result = navigator.maybePop();
+      if (ApexNavTrace.enabled) {
+        result.then((handled) {
+          ApexNavTrace.write('BackAction.maybePop handled=$handled navigator=${identityHashCode(navigator)}');
+        });
+      }
+    } else {
+      ApexNavTrace.write('BackAction.delegateLauncher', context: context);
       LauncherState state = context.read<LauncherState>();
       state.handleBackNavigation(context);
     }
@@ -70,9 +69,7 @@ class BackAction extends Action<BackIntent> {
 class MoveFocusToSettingsIntent extends Intent {
   const MoveFocusToSettingsIntent();
 }
-
 class BackIntent extends Intent {
   const BackIntent();
 }
-
 Future<bool> isDefaultLauncher(BuildContext context) async => await context.read<AppsService>().isDefaultLauncher();

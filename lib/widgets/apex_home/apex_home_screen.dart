@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:apex_tv/apex_nav_trace.dart';
 import 'package:apex_tv/l10n/app_localizations.dart';
 import '../date_time_widget.dart';
 import '../network_widget.dart';
@@ -32,12 +33,17 @@ class ApexHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void close() => Navigator.of(context).pop();
+    ApexNavTrace.install();
+    void close(String source) {
+      ApexNavTrace.write('preview.close source=$source', context: context);
+      Navigator.of(context).pop();
+      ApexNavTrace.write('preview.pop.requested source=$source');
+    }
     return CallbackShortcuts(
       bindings: {
-        const SingleActivator(LogicalKeyboardKey.escape): close,
-        const SingleActivator(LogicalKeyboardKey.goBack): close,
-        const SingleActivator(LogicalKeyboardKey.gameButtonB): close,
+        const SingleActivator(LogicalKeyboardKey.escape): () => close('escape'),
+        const SingleActivator(LogicalKeyboardKey.goBack): () => close('goBack'),
+        const SingleActivator(LogicalKeyboardKey.gameButtonB): () => close('gameButtonB'),
       },
       child: Scaffold(
         key: const Key('apexHomePreview'),
@@ -55,7 +61,7 @@ class ApexHomeScreen extends StatelessWidget {
                       TextButton.icon(
                         key: const Key('apexHomeBack'),
                         autofocus: true,
-                        onPressed: close,
+                        onPressed: () => close('button'),
                         icon: const Icon(Icons.arrow_back),
                         label: Text(MaterialLocalizations.of(context).backButtonTooltip),
                       ),

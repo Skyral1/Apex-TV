@@ -9,13 +9,13 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-
+import 'package:apex_tv/apex_nav_trace.dart';
 import 'package:apex_tv/widgets/side_panel_dialog.dart';
 import 'package:apex_tv/widgets/settings/applications_panel_page.dart';
 import 'package:apex_tv/widgets/settings/launcher_sections_panel_page.dart';
@@ -51,40 +51,44 @@ import 'package:flutter/material.dart';
 
 class SettingsPanel extends StatefulWidget {
   final String? initialRoute;
-
   const SettingsPanel({super.key, this.initialRoute});
-
   @override
   State<SettingsPanel> createState() => _SettingsPanelState();
 }
 
 class _SettingsPanelState extends State<SettingsPanel> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-
   @override
   Widget build(BuildContext context) {
+    ApexNavTrace.install();
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
+        ApexNavTrace.write('settings.onPop didPop=$didPop', context: context);
         if (didPop) return;
         final navigator = _navigatorKey.currentState;
+        ApexNavTrace.write('settings.nested.maybePop.request navigator=${navigator == null ? "none" : identityHashCode(navigator)}', context: context);
         if (navigator != null && await navigator.maybePop()) {
+          ApexNavTrace.write('settings.nested.maybePop.handled', context: context);
           return;
         }
+        ApexNavTrace.write('settings.nested.maybePop.notHandled', context: context);
         if (context.mounted) {
+          ApexNavTrace.write('settings.closePanel', context: context);
           Navigator.of(context).pop();
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.black.withValues(alpha: 0.70), // Dim the background
+        backgroundColor: Colors.black.withValues(alpha: 0.70),
         body: Stack(
           children: [
-            // Tap outside to close
             GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
+              onTap: () {
+                ApexNavTrace.write('settings.outsideTap.close', context: context);
+                Navigator.of(context).pop();
+              },
               child: Container(color: Colors.transparent),
             ),
-            // The side panel
             SidePanelDialog(
               width: 350,
               isRightSide: false,
@@ -110,8 +114,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
                     case LauncherSectionsPanelPage.routeName:
                       return _FastPageRoute(builder: (_) => LauncherSectionsPanelPage());
                     case LauncherSectionPanelPage.routeName:
-                      return _FastPageRoute(
-                          builder: (_) => LauncherSectionPanelPage(sectionIndex: settings.arguments as int?));
+                      return _FastPageRoute(builder: (_) => LauncherSectionPanelPage(sectionIndex: settings.arguments as int?));
                     case DataUsagePeriodPage.routeName:
                       return _FastPageRoute(builder: (_) => DataUsagePeriodPage());
                     case BackButtonActionPage.routeName:
@@ -151,10 +154,9 @@ class _SettingsPanelState extends State<SettingsPanel> {
                     case ContinueWatchingAppsPage.routeName:
                       return _FastPageRoute(builder: (_) => const ContinueWatchingAppsPage());
                     case AppDetailsPage.routeName:
-                      return _FastPageRoute(
-                          builder: (_) => AppDetailsPage(application: settings.arguments as App));
+                      return _FastPageRoute(builder: (_) => AppDetailsPage(application: settings.arguments as App));
                     default:
-                      throw ArgumentError.value(settings.name, "settings.name", "Route not supported.");
+                      throw ArgumentError.value(settings.name, 'settings.name', 'Route not supported.');
                   }
                 },
               ),
@@ -166,7 +168,7 @@ class _SettingsPanelState extends State<SettingsPanel> {
   }
 }
 
-/// A snappy page route with zero transition delay for instant, glitch-free TV navigation.
+/// A snappy page route with zero transition delay for TV navigation.
 class _FastPageRoute<T> extends PageRouteBuilder<T> {
   _FastPageRoute({required Widget Function(BuildContext) builder})
       : super(

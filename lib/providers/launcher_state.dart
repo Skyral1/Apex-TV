@@ -9,61 +9,53 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-
+import 'package:apex_tv/apex_nav_trace.dart';
 import 'package:apex_tv/providers/settings_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-
 import '../widgets/settings/back_button_actions.dart';
 import 'apps_service.dart';
 
-class LauncherState extends ChangeNotifier
-{
+class LauncherState extends ChangeNotifier {
   bool _isDefaultLauncher;
   bool _launcherVisible;
-
   DateTime? _suppressBackUntil;
-
-  bool  get isDefaultLauncher => _isDefaultLauncher;
-  bool  get launcherVisible => _launcherVisible;
-
+  bool get isDefaultLauncher => _isDefaultLauncher;
+  bool get launcherVisible => _launcherVisible;
   LauncherState() : _isDefaultLauncher = false, _launcherVisible = true;
-
   void toggleLauncherVisibility() {
     _launcherVisible = !_launcherVisible;
     notifyListeners();
   }
-
   void suppressBackNavigation() {
     _suppressBackUntil = DateTime.now().add(const Duration(milliseconds: 500));
   }
-
   Future<void> refresh(AppsService appsService) async {
     _isDefaultLauncher = await appsService.isDefaultLauncher();
     notifyListeners();
   }
-
   void handleBackNavigation(BuildContext context) {
+    ApexNavTrace.write('launcher.handleBack default=$_isDefaultLauncher visible=$_launcherVisible', context: context);
     if (_suppressBackUntil != null && DateTime.now().isBefore(_suppressBackUntil!)) {
+      ApexNavTrace.write('launcher.back.suppressed');
       _suppressBackUntil = null;
       return;
     }
     AppsService appsService = context.read<AppsService>();
     LauncherState launcherState = context.read<LauncherState>();
     SettingsService settingsService = context.read<SettingsService>();
-
     if (kDebugMode || launcherState.isDefaultLauncher) {
       launcherState.refresh(appsService);
       String action = settingsService.backButtonAction;
-
+      ApexNavTrace.write('launcher.back.action=$action');
       switch (action) {
         case BACK_BUTTON_ACTION_CLOCK:
           launcherState.toggleLauncherVisibility();
@@ -72,8 +64,8 @@ class LauncherState extends ChangeNotifier
           appsService.startAmbientMode();
           break;
       }
-    }
-    else {
+    } else {
+      ApexNavTrace.write('launcher.SystemNavigator.pop');
       SystemNavigator.pop();
     }
   }
