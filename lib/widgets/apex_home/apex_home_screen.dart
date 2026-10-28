@@ -24,11 +24,11 @@ class ApexHomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DateTimeWidget(),
-                  NetworkWidget(),
+                  const DateTimeWidget('EEE d MMM • HH:mm'),
+                  const NetworkWidget(),
                 ],
               ),
               const SizedBox(height: 40),
