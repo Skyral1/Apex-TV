@@ -35,7 +35,7 @@ class FocusKeyboardListener extends StatefulWidget {
   });
 
   @override
-  _FocusKeyboardListenerState createState() => _FocusKeyboardListenerState();
+  State<FocusKeyboardListener> createState() => _FocusKeyboardListenerState();
 }
 
 class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {
@@ -123,7 +123,6 @@ class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {
     } else if (_longPress() && !_longPressFired) {
       _longPressTimer?.cancel();
       _longPressFired = true;
-      _keyDownAt = null;
       return widget.onLongPress?.call(key) ?? KeyEventResult.ignored;
     }
     return KeyEventResult.handled;

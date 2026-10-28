@@ -49,6 +49,13 @@ void main() {
       return categoriesByNameCache![targetName] ?? fallbackCategoryCache;
     }
 
+    // Exercise invalidation outside the timed loop and verify both routes.
+    expect(findTargetCategoryForNewAppOptimized(false)?.id, numCategories - 2);
+    expect(findTargetCategoryForNewAppOptimized(true)?.id, numCategories - 1);
+    invalidateCategoryCache();
+    expect(findTargetCategoryForNewAppOptimized(false)?.id, numCategories - 2);
+    expect(findTargetCategoryForNewAppOptimized(true)?.id, numCategories - 1);
+
     // Measure Optimized
     Stopwatch sw = Stopwatch()..start();
     for (int i = 0; i < 100000; i++) {
