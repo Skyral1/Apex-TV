@@ -16,10 +16,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/flauncher_channel.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/launcher_state.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/flauncher_channel.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/launcher_state.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:provider/provider.dart';

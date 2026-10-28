@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:developer' as developer;
 import 'dart:io' show Platform;
-import 'package:flauncher/flauncher_channel.dart';
-import 'package:flauncher/models/weather_data.dart';
+import 'package:apex_tv/flauncher_channel.dart';
+import 'package:apex_tv/models/weather_data.dart';
 import 'package:flutter/widgets.dart';
 
 class WeatherService extends ChangeNotifier with WidgetsBindingObserver {

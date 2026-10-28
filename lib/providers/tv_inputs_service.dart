@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flauncher/flauncher_channel.dart';
-import 'package:flauncher/models/tv_input.dart';
+import 'package:apex_tv/flauncher_channel.dart';
+import 'package:apex_tv/models/tv_input.dart';
 
 class TvInputsService extends ChangeNotifier {
   final FLauncherChannel _channel;

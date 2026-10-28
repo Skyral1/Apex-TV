@@ -1,4 +1,4 @@
-import 'package:flauncher/widgets/side_panel_dialog.dart';
+import 'package:apex_tv/widgets/side_panel_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

@@ -1,10 +1,10 @@
-import 'package:flauncher/providers/weather_service.dart';
+import 'package:apex_tv/providers/weather_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:flauncher/widgets/focus_aware_app_bar.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/tv_inputs_service.dart';
-import 'package:flauncher/providers/notifications_service.dart';
+import 'package:apex_tv/widgets/focus_aware_app_bar.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/tv_inputs_service.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
 import 'package:provider/provider.dart';
 import 'package:mockito/mockito.dart';
 import '../mocks.mocks.dart';

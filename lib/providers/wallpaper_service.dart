@@ -19,9 +19,9 @@
 import 'dart:io';
 import 'dart:async';
 
-import 'package:flauncher/flauncher_channel.dart';
-import 'package:flauncher/gradients.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/flauncher_channel.dart';
+import 'package:apex_tv/gradients.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';

@@ -1,4 +1,4 @@
-import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
+import 'package:apex_tv/widgets/settings/focusable_settings_tile.dart';
 import 'package:flutter/material.dart';
 
 class RoundedSwitchListTile extends StatelessWidget {

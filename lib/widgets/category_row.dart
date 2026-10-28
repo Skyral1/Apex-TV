@@ -16,9 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/widgets/app_card.dart';
-import 'package:flauncher/widgets/category_container_common.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/widgets/app_card.dart';
+import 'package:apex_tv/widgets/category_container_common.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/rendering.dart' show ScrollCacheExtent;

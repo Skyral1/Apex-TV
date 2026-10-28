@@ -1,4 +1,4 @@
-import 'package:flauncher/models/weather_data.dart';
+import 'package:apex_tv/models/weather_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

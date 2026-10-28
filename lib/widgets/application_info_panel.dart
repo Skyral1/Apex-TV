@@ -20,12 +20,12 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/widgets/add_to_category_dialog.dart';
-import 'package:flauncher/widgets/side_panel_dialog.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/widgets/add_to_category_dialog.dart';
+import 'package:apex_tv/widgets/side_panel_dialog.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/l10n/app_localizations_en.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations_en.dart';
 
 import '../models/app.dart';
 import '../models/category.dart';

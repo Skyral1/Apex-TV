@@ -1,5 +1,5 @@
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/weather_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/weather_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

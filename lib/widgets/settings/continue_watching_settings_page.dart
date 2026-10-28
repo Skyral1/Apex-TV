@@ -20,10 +20,10 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/widgets/rounded_switch_list_tile.dart';
 import 'continue_watching_apps_page.dart';
 import 'continue_watching_card_size_page.dart';
 import 'continue_watching_max_items_page.dart';

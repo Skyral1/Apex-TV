@@ -19,8 +19,8 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/providers/notifications_service.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
 import 'focusable_settings_tile.dart';
 import 'blocked_notifications_page.dart';
 

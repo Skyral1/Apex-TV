@@ -1,6 +1,6 @@
-import 'package:flauncher/providers/network_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/daily_data_usage_widget.dart';
+import 'package:apex_tv/providers/network_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/daily_data_usage_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

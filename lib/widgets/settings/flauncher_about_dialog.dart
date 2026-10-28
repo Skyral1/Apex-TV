@@ -18,9 +18,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 
 class LTvLauncherAboutDialog extends StatelessWidget {
   final PackageInfo packageInfo;

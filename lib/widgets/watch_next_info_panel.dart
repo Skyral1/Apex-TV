@@ -19,11 +19,11 @@
 import 'dart:typed_data';
 
 import 'package:collection/collection.dart';
-import 'package:flauncher/models/watch_next_program.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/widgets/side_panel_dialog.dart';
+import 'package:apex_tv/models/watch_next_program.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/widgets/side_panel_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

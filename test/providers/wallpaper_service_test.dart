@@ -17,8 +17,8 @@
  */
 
 import 'package:drift/drift.dart';
-import 'package:flauncher/gradients.dart';
-import 'package:flauncher/providers/wallpaper_service.dart';
+import 'package:apex_tv/gradients.dart';
+import 'package:apex_tv/providers/wallpaper_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mockito/mockito.dart';

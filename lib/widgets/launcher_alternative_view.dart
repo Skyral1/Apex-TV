@@ -19,8 +19,8 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/date_time_widget.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/date_time_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';

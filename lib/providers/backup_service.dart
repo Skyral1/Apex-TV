@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:drift/drift.dart';
-import 'package:flauncher/database.dart';
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

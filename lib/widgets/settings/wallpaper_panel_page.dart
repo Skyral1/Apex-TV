@@ -16,15 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/wallpaper_service.dart';
-import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
-import 'package:flauncher/widgets/settings/gradient_panel_page.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/wallpaper_service.dart';
+import 'package:apex_tv/widgets/settings/focusable_settings_tile.dart';
+import 'package:apex_tv/widgets/settings/gradient_panel_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
-import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
+import 'package:apex_tv/widgets/rounded_switch_list_tile.dart';
 
 class WallpaperPanelPage extends StatelessWidget {
   static const String routeName = "wallpaper_panel";

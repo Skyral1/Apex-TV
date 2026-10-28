@@ -1,13 +1,13 @@
 
 import 'dart:typed_data';
 
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/widgets/add_to_category_dialog.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/widgets/add_to_category_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 class AppDetailsPage extends StatelessWidget {
   static const String routeName = "app_details_page";

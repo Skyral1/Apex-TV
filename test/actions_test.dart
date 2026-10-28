@@ -1,5 +1,5 @@
-import 'package:flauncher/actions.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/actions.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

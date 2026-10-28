@@ -1,15 +1,15 @@
-import 'package:flauncher/models/watch_next_program.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/actions.dart';
-import 'package:flauncher/widgets/app_card_keys.dart';
-import 'package:flauncher/widgets/focus_keyboard_listener.dart';
-import 'package:flauncher/widgets/watch_next_info_panel.dart';
+import 'package:apex_tv/models/watch_next_program.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/actions.dart';
+import 'package:apex_tv/widgets/app_card_keys.dart';
+import 'package:apex_tv/widgets/focus_keyboard_listener.dart';
+import 'package:apex_tv/widgets/watch_next_info_panel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 class ContinueWatchingRow extends StatelessWidget {
   final bool isFirstSection;

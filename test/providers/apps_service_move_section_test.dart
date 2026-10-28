@@ -1,5 +1,5 @@
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/apps_service.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/apps_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';

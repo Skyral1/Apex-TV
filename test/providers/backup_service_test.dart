@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
-import 'package:flauncher/database.dart';
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/backup_service.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/backup_service.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';

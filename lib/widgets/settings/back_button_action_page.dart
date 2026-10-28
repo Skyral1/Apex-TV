@@ -1,10 +1,10 @@
 
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/settings/back_button_actions.dart';
-import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/settings/back_button_actions.dart';
+import 'package:apex_tv/widgets/settings/focusable_settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 class BackButtonActionPage extends StatelessWidget {
   static const String routeName = "back_button_action_panel";

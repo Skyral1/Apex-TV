@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flauncher/providers/notifications_service.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences_platform_interface/shared_preferences_platform_interface.dart';

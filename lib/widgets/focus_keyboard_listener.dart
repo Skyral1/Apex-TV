@@ -18,7 +18,7 @@
 
 import 'dart:async';
 
-import 'package:flauncher/widgets/app_card_keys.dart';
+import 'package:apex_tv/widgets/app_card_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

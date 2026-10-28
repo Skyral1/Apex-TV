@@ -1,10 +1,10 @@
-import 'package:flauncher/widgets/settings/settings_panel.dart';
-import 'package:flauncher/widgets/settings/inputs_panel.dart';
-import 'package:flauncher/widgets/settings/notifications_panel.dart';
-import 'package:flauncher/providers/tv_inputs_service.dart';
-import 'package:flauncher/providers/notifications_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/weather_service.dart';
+import 'package:apex_tv/widgets/settings/settings_panel.dart';
+import 'package:apex_tv/widgets/settings/inputs_panel.dart';
+import 'package:apex_tv/widgets/settings/notifications_panel.dart';
+import 'package:apex_tv/providers/tv_inputs_service.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/weather_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

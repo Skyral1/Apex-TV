@@ -16,9 +16,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/gradients.dart';
-import 'package:flauncher/providers/wallpaper_service.dart';
-import 'package:flauncher/widgets/settings/gradient_panel_page.dart';
+import 'package:apex_tv/gradients.dart';
+import 'package:apex_tv/providers/wallpaper_service.dart';
+import 'package:apex_tv/widgets/settings/gradient_panel_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

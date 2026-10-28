@@ -18,15 +18,15 @@
 
 import 'dart:async';
 
-import 'package:flauncher/actions.dart';
-import 'package:flauncher/app_image_type.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/application_info_panel.dart';
-import 'package:flauncher/widgets/focus_keyboard_listener.dart';
-import 'package:flauncher/widgets/app_card_keys.dart';
-import 'package:flauncher/providers/launcher_state.dart';
-import 'package:flauncher/providers/notifications_service.dart';
+import 'package:apex_tv/actions.dart';
+import 'package:apex_tv/app_image_type.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/application_info_panel.dart';
+import 'package:apex_tv/widgets/focus_keyboard_listener.dart';
+import 'package:apex_tv/widgets/app_card_keys.dart';
+import 'package:apex_tv/providers/launcher_state.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';

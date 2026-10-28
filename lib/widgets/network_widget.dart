@@ -1,4 +1,4 @@
-import 'package:flauncher/providers/network_service.dart';
+import 'package:apex_tv/providers/network_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

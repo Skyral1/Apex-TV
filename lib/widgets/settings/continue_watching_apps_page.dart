@@ -22,11 +22,11 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/widgets/rounded_switch_list_tile.dart';
 import 'focusable_settings_tile.dart';
 
 class ContinueWatchingAppsPage extends StatelessWidget {

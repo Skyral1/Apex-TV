@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/providers/network_service.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/providers/network_service.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:mockito/mockito.dart';
 
 class MockFlauncherChannel extends Mock implements FLauncherChannel {

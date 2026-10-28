@@ -18,7 +18,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 class AddCategoryDialog extends StatefulWidget {
   final String initialValue;

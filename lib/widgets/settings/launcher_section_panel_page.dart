@@ -18,11 +18,11 @@
 
 import 'dart:async';
 
-import 'package:flauncher/providers/apps_service.dart';
+import 'package:apex_tv/providers/apps_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 import '../../models/category.dart';
 

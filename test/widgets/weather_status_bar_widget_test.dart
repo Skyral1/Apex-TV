@@ -1,7 +1,7 @@
-import 'package:flauncher/models/weather_data.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/weather_service.dart';
-import 'package:flauncher/widgets/weather_status_bar_widget.dart';
+import 'package:apex_tv/models/weather_data.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/weather_service.dart';
+import 'package:apex_tv/widgets/weather_status_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

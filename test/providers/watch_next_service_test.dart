@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/models/watch_next_program.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/models/watch_next_program.dart';
 import '../mocks.mocks.dart';
 
 void main() {

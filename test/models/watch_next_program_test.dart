@@ -17,7 +17,7 @@
  */
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/models/watch_next_program.dart';
+import 'package:apex_tv/models/watch_next_program.dart';
 
 void main() {
   group('WatchNextProgram', () {

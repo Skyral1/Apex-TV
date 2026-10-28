@@ -1,5 +1,5 @@
-import 'package:flauncher/providers/network_service.dart';
-import 'package:flauncher/widgets/network_widget.dart';
+import 'package:apex_tv/providers/network_service.dart';
+import 'package:apex_tv/widgets/network_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';

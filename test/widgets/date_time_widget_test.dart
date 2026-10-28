@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/widgets/date_time_widget.dart';
-import 'package:flauncher/widgets/animated_character.dart';
+import 'package:apex_tv/widgets/date_time_widget.dart';
+import 'package:apex_tv/widgets/animated_character.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {

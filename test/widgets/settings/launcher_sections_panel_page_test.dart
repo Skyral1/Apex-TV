@@ -16,16 +16,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/settings/continue_watching_settings_page.dart';
-import 'package:flauncher/widgets/settings/launcher_sections_panel_page.dart';
-import 'package:flauncher/widgets/settings/launcher_section_panel_page.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/settings/continue_watching_settings_page.dart';
+import 'package:apex_tv/widgets/settings/launcher_sections_panel_page.dart';
+import 'package:apex_tv/widgets/settings/launcher_section_panel_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';

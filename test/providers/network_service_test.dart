@@ -1,4 +1,4 @@
-import 'package:flauncher/providers/network_service.dart';
+import 'package:apex_tv/providers/network_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:fake_async/fake_async.dart';

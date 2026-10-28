@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:flauncher/database.dart';
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/models/category.dart';
 
 void main() {
   test('Benchmark apps categories grouping', () {

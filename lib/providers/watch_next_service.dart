@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io' show Platform;
 import 'package:flutter/widgets.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import '../models/watch_next_program.dart';
 
 class WatchNextService extends ChangeNotifier with WidgetsBindingObserver {

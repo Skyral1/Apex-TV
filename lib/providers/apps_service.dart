@@ -24,8 +24,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'settings_service.dart';
 
 import 'package:drift/drift.dart';
-import 'package:flauncher/database.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:flutter/foundation.dart' hide Category;
 import 'package:flutter/widgets.dart';
 import 'package:pool/pool.dart';

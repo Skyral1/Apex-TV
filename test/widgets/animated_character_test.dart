@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/widgets/animated_character.dart';
+import 'package:apex_tv/widgets/animated_character.dart';
 
 void main() {
   group('AnimatedCharacter', () {

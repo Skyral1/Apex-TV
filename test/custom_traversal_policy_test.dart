@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/custom_traversal_policy.dart';
+import 'package:apex_tv/custom_traversal_policy.dart';
 
 void main() {
   group('Geometry Extension', () {

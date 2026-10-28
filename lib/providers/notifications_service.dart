@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NotificationItem {

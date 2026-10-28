@@ -17,7 +17,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 import 'focusable_settings_tile.dart';
 import 'date_time_format_page.dart';
 import 'back_button_action_page.dart';

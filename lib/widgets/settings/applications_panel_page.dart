@@ -17,13 +17,13 @@
  */
 
 
-import 'package:flauncher/providers/apps_service.dart';
+import 'package:apex_tv/providers/apps_service.dart';
 
-import 'package:flauncher/widgets/ensure_visible.dart';
+import 'package:apex_tv/widgets/ensure_visible.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/widgets/settings/app_details_page.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/widgets/settings/app_details_page.dart';
 import 'package:flutter/services.dart';
 
 import '../../models/app.dart';

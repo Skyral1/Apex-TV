@@ -17,7 +17,7 @@
  */
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flauncher/models/app.dart';
+import 'package:apex_tv/models/app.dart';
 
 void main() {
   group('App', () {

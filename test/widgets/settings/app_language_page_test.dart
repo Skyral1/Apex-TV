@@ -1,8 +1,8 @@
-import 'package:flauncher/flauncher_app.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/settings/app_language_page.dart';
-import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
+import 'package:apex_tv/flauncher_app.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/settings/app_language_page.dart';
+import 'package:apex_tv/widgets/settings/focusable_settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';

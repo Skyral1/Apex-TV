@@ -1,4 +1,4 @@
-import 'package:flauncher/widgets/settings/applications_panel_page.dart';
+import 'package:apex_tv/widgets/settings/applications_panel_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

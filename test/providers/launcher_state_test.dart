@@ -1,7 +1,7 @@
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/launcher_state.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/settings/back_button_actions.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/launcher_state.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/settings/back_button_actions.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

@@ -1,8 +1,8 @@
-import 'package:flauncher/l10n/app_localizations.dart';
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/apps_grid.dart';
-import 'package:flauncher/widgets/category_row.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/apps_grid.dart';
+import 'package:apex_tv/widgets/category_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';

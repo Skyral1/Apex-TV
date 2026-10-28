@@ -18,21 +18,21 @@
 
 import 'dart:math';
 
-import 'package:flauncher/database.dart';
-import 'package:flauncher/flauncher_channel.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/providers/network_service.dart';
-import 'package:flauncher/providers/wallpaper_service.dart';
-import 'package:flauncher/providers/notifications_service.dart';
-import 'package:flauncher/providers/tv_inputs_service.dart';
-import 'package:flauncher/providers/watch_next_service.dart';
-import 'package:flauncher/providers/weather_service.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/flauncher_channel.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/providers/network_service.dart';
+import 'package:apex_tv/providers/wallpaper_service.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
+import 'package:apex_tv/providers/tv_inputs_service.dart';
+import 'package:apex_tv/providers/watch_next_service.dart';
+import 'package:apex_tv/providers/weather_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mockito/annotations.dart';
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/models/category.dart';
 
 
 @GenerateMocks([

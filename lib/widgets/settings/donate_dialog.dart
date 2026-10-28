@@ -18,9 +18,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/providers/settings_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
 
 class DonateDialog extends StatefulWidget {
   const DonateDialog({super.key});

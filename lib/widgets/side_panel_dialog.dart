@@ -1,4 +1,4 @@
-import 'package:flauncher/actions.dart';
+import 'package:apex_tv/actions.dart';
 import 'package:flutter/material.dart';
 
 class SidePanelDialog extends StatelessWidget {

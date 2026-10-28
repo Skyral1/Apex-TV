@@ -19,7 +19,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flauncher/flauncher_channel.dart';
+import 'package:apex_tv/flauncher_channel.dart';
 import 'package:flutter/material.dart';
 
 // Values are indexed by the Android method channel; preserve this order.

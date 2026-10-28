@@ -18,8 +18,8 @@
 
 import 'dart:math';
 
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/widgets/app_card.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/widgets/app_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

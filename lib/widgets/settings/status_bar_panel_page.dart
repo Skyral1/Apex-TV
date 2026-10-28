@@ -16,12 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flauncher/providers/weather_service.dart';
-import 'package:flauncher/widgets/rounded_switch_list_tile.dart';
-import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
+import 'package:apex_tv/providers/weather_service.dart';
+import 'package:apex_tv/widgets/rounded_switch_list_tile.dart';
+import 'package:apex_tv/widgets/settings/focusable_settings_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 import '../../providers/settings_service.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:flauncher/models/weather_data.dart';
-import 'package:flauncher/providers/weather_service.dart';
+import 'package:apex_tv/models/weather_data.dart';
+import 'package:apex_tv/providers/weather_service.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';

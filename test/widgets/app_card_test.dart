@@ -1,8 +1,8 @@
-import 'package:flauncher/models/app.dart';
-import 'package:flauncher/models/category.dart';
-import 'package:flauncher/providers/apps_service.dart';
-import 'package:flauncher/providers/settings_service.dart';
-import 'package:flauncher/widgets/app_card.dart';
+import 'package:apex_tv/models/app.dart';
+import 'package:apex_tv/models/category.dart';
+import 'package:apex_tv/providers/apps_service.dart';
+import 'package:apex_tv/providers/settings_service.dart';
+import 'package:apex_tv/widgets/app_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,13 +10,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flauncher/providers/notifications_service.dart';
+import 'package:apex_tv/providers/notifications_service.dart';
 import '../mocks.dart';
 import '../mocks.mocks.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 // Import localizations directly from lib/l10n
-import 'package:flauncher/l10n/app_localizations.dart';
+import 'package:apex_tv/l10n/app_localizations.dart';
 
 void main() {
   late MockAppsService mockAppsService;

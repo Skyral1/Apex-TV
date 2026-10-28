@@ -17,8 +17,8 @@
  */
 
 import 'package:drift_dev/api/migrations_native.dart';
-import 'package:flauncher/database.dart';
-import 'package:flauncher/models/category.dart';
+import 'package:apex_tv/database.dart';
+import 'package:apex_tv/models/category.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'generated_migrations/schema.dart';
