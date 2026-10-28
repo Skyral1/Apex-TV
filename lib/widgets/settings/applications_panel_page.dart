@@ -93,8 +93,8 @@ class _ApplicationsPanelPageState extends State<ApplicationsPanelPage> {
             },
             child: Actions(
               actions: <Type, Action<Intent>>{
-                ChangeTabIntent: ChangeTabAction(this),
-                MoveFocusToTabIntent: MoveFocusToTabAction(this),
+                ChangeTabIntent: ChangeTabAction(changeTab),
+                MoveFocusToTabIntent: MoveFocusToTabAction(focusCurrentTab),
               },
               child: _buildCurrentTab(),
             ),
@@ -225,11 +225,13 @@ class MoveFocusToTabIntent extends Intent {
 }
 
 class MoveFocusToTabAction extends Action<MoveFocusToTabIntent> {
-  final _ApplicationsPanelPageState state;
-  MoveFocusToTabAction(this.state);
+  // Keep this public action independent of the private widget State type.
+  final VoidCallback onFocusCurrentTab;
+
+  MoveFocusToTabAction(this.onFocusCurrentTab);
   @override
   Object? invoke(MoveFocusToTabIntent intent) {
-    state.focusCurrentTab();
+    onFocusCurrentTab();
     return null;
   }
 }
@@ -240,13 +242,14 @@ class ChangeTabIntent extends Intent {
 }
 
 class ChangeTabAction extends Action<ChangeTabIntent> {
-  final _ApplicationsPanelPageState state;
+  // Forward the remote direction without exposing the private widget State.
+  final ValueChanged<int> onChangeTab;
 
-  ChangeTabAction(this.state);
+  ChangeTabAction(this.onChangeTab);
 
   @override
   Object? invoke(ChangeTabIntent intent) {
-    state.changeTab(intent.direction);
+    onChangeTab(intent.direction);
     return null;
   }
 }

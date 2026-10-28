@@ -72,9 +72,7 @@ void main() {
     configureTestDisplay(tester);
     final appsService = MockAppsService();
     when(appsService.launcherSections).thenReturn([fakeCategory(name: "Favorites")]);
-    when(appsService.addSpacer(any)).thenAnswer((_) async {
-      return null;
-    });
+    when(appsService.addSpacer(any)).thenAnswer((_) async {});
 
     await tester.pumpWidget(
       ChangeNotifierProvider<AppsService>.value(
@@ -108,7 +106,7 @@ void main() {
     await tester.tap(find.text("Save"));
     await tester.pumpAndSettle();
 
-    verify(appsService.addSpacer(any));
+    verify(appsService.addSpacer(any)).called(1);
     // A live "New section" form here let the Type dropdown crash the panel.
     expect(find.text("New section"), findsNothing);
     expect(find.text("Open"), findsOneWidget);

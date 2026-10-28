@@ -48,9 +48,7 @@ void main() {
 
   testWidgets('calls requestPermission when button is tapped', (WidgetTester tester) async {
     when(mockNetworkService.hasUsageStatsPermission).thenReturn(false);
-    when(mockNetworkService.requestPermission()).thenAnswer((_) async {
-      return null;
-    });
+    when(mockNetworkService.requestPermission()).thenAnswer((_) async {});
 
     await tester.pumpWidget(createWidgetUnderTest());
 
