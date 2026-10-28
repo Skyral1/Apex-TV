@@ -169,13 +169,94 @@ void main() {
     });
   });
 
+  group('Android network index compatibility', () {
+    // This list specifies the native channel contract, not enum declaration order.
+    const expectedNetworkTypes = [
+      NetworkType.cellular,
+      NetworkType.wifi,
+      NetworkType.vpn,
+      NetworkType.wired,
+      NetworkType.unknown,
+    ];
+
+    for (var index = 0; index < expectedNetworkTypes.length; index++) {
+      final expectedType = expectedNetworkTypes[index];
+      test('native network index $index maps to ${expectedType.name}', () {
+        networkListener!({
+          'name': 'NETWORK_AVAILABLE',
+          'arguments': {
+            'networkType': index,
+            'internetAccess': true,
+            'wirelessSignalLevel': 3,
+            'vpnActive': false,
+          },
+        });
+
+        expect(networkService.networkType, expectedType);
+        expect(networkService.hasInternetAccess, isTrue);
+        if (expectedType == NetworkType.cellular ||
+            expectedType == NetworkType.wifi) {
+          expect(networkService.wirelessNetworkSignalLevel, 3);
+        }
+      });
+    }
+
+    for (final index in [-1, 5, 999]) {
+      test('invalid native network index $index maps to unknown', () {
+        networkListener!({
+          'name': 'CAPABILITIES_CHANGED',
+          'arguments': {'networkType': index},
+        });
+
+        expect(networkService.networkType, NetworkType.unknown);
+      });
+    }
+
+    // Preserve every TelephonyManager index, especially reserved slots 7 and 19.
+    const expectedCellularTypes = [
+      CellularNetworkType.unknown,
+      CellularNetworkType.gprs,
+      CellularNetworkType.edge,
+      CellularNetworkType.umts,
+      CellularNetworkType.cdma,
+      CellularNetworkType.evdoZero,
+      CellularNetworkType.evdoA,
+      CellularNetworkType.unknown,
+      CellularNetworkType.hsdpa,
+      CellularNetworkType.hsupa,
+      CellularNetworkType.hspa,
+      CellularNetworkType.iden,
+      CellularNetworkType.evdoB,
+      CellularNetworkType.lte,
+      CellularNetworkType.ehrpd,
+      CellularNetworkType.hspap,
+      CellularNetworkType.gsm,
+      CellularNetworkType.tdScdma,
+      CellularNetworkType.iwlan,
+      CellularNetworkType.unknown,
+      CellularNetworkType.nr,
+    ];
+
+    for (var index = 0; index < expectedCellularTypes.length; index++) {
+      final expectedType = expectedCellularTypes[index];
+      test('native cellular index $index maps to ${expectedType.name}', () {
+        networkListener!({
+          'name': 'CELLULAR_STATE_CHANGED',
+          'arguments': index,
+        });
+
+        expect(networkService.cellularNetworkType, expectedType);
+      });
+    }
+  });
+
   group('network events safety', () {
     test('handles CELLULAR_STATE_CHANGED with out-of-bounds index without throwing', () {
       expect(networkListener, isNotNull);
       expect(() => networkListener!({'name': 'CELLULAR_STATE_CHANGED', 'arguments': 999}), returnsNormally);
-      expect(networkService.cellularNetworkType, CellularNetworkType.Unknown);
+      expect(networkService.cellularNetworkType, CellularNetworkType.unknown);
       expect(() => networkListener!({'name': 'CELLULAR_STATE_CHANGED', 'arguments': -5}), returnsNormally);
-      expect(networkService.cellularNetworkType, CellularNetworkType.Unknown);
+      expect(networkService.cellularNetworkType, CellularNetworkType.unknown);
     });
   });
 }
