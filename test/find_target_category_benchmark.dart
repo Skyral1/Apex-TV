@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flauncher/models/category.dart';
 
@@ -63,6 +64,6 @@ void main() {
       findTargetCategoryForNewAppOptimized(true);
     }
     sw.stop();
-    print("Optimized time: ${sw.elapsedMilliseconds} ms");
+    debugPrint("Optimized time: ${sw.elapsedMilliseconds} ms");
   });
 }

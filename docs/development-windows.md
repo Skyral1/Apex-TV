@@ -21,16 +21,17 @@ previous one succeeds:
 
 ```powershell
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 dart run drift_dev schema generate drift_schemas/ test/generated_migrations/
 flutter analyze
 flutter test
 ```
 
-`--delete-conflicting-outputs` lets build_runner replace conflicting generated
-outputs. Do not manually edit generated files; keep handwritten changes in the
-source files that generate them. This procedure does not run `git reset`,
-`git clean` or `flutter clean`.
+The pinned build_runner 2.16.2 no longer uses `--delete-conflicting-outputs`;
+it reports that option as removed and ignored. Use `dart run build_runner build`
+without the obsolete flag. Do not manually edit generated files; keep handwritten
+changes in the source files that generate them. This procedure does not run
+`git reset`, `git clean` or `flutter clean`.
 
 ## Fix network enum compilation errors
 
@@ -47,7 +48,7 @@ The current names are `CellularNetworkType.unknown` and
 The generated file is deliberately ignored by Git, so fetching or switching a
 branch does not refresh an existing local copy.
 
-Regenerate it with `dart run build_runner build --delete-conflicting-outputs`
+Regenerate it with `dart run build_runner build`
 or run the preparation script. Do not add enum aliases, manually patch the
 Mockito output or force-add it to Git as a workaround.
 

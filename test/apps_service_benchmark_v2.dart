@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flauncher/database.dart';
 import 'package:flauncher/providers/apps_service.dart';
@@ -79,11 +80,25 @@ void main() {
     await appsService.addAllToCategory(appsToAdd2, category2, shouldNotifyListeners: false);
     swBatch.stop();
 
-    print('LOOP: Adding $numApps apps took ${swLoop.elapsedMilliseconds}ms');
-    print('BATCH: Adding $numApps apps took ${swBatch.elapsedMilliseconds}ms');
+    final persisted = await database.getAppsCategories();
+    for (final category in [category1, category2]) {
+      final entries = persisted
+          .where((entry) => entry.categoryId == category.id)
+          .toList()
+        ..sort((a, b) => a.order.compareTo(b.order));
+      final expectedApps = category.id == category1.id ? appsToAdd1 : appsToAdd2;
+      expect(entries, hasLength(numApps));
+      expect(entries.map((entry) => entry.appPackageName),
+          orderedEquals(expectedApps.map((app) => app.packageName)));
+      expect(entries.map((entry) => entry.order),
+          orderedEquals(List.generate(numApps, (i) => i)));
+    }
+
+    debugPrint('LOOP: Adding $numApps apps took ${swLoop.elapsedMilliseconds}ms');
+    debugPrint('BATCH: Adding $numApps apps took ${swBatch.elapsedMilliseconds}ms');
 
     if (swBatch.elapsedMilliseconds < swLoop.elapsedMilliseconds) {
-        print('OPTIMIZATION: Batch was ${swLoop.elapsedMilliseconds - swBatch.elapsedMilliseconds}ms faster');
+        debugPrint('OPTIMIZATION: Batch was ${swLoop.elapsedMilliseconds - swBatch.elapsedMilliseconds}ms faster');
     }
   });
 }
