@@ -1,5 +1,6 @@
 <!--
-  ~ FLauncher
+  ~ Apex TV
+  ~ Based on FLauncher by Étienne Fesser.
   ~ Copyright (C) 2021  Étienne Fesser
   ~
   ~ This program is free software: you can redistribute it and/or modify
@@ -61,7 +62,7 @@
         android:allowBackup="false"
         android:banner="@drawable/banner"
         android:icon="@mipmap/ic_launcher"
-        android:label="LTvLauncher">
+        android:label="Apex TV">
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -89,7 +90,7 @@
         <service
             android:name=".ClockScreensaverService"
             android:exported="true"
-            android:label="LTvLauncher Clock"
+            android:label="Apex TV Clock"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
@@ -102,7 +103,7 @@
 
         <service
             android:name=".LauncherNotificationListenerService"
-            android:label="LTvLauncher Notification Service"
+            android:label="Apex TV Notification Service"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
             android:exported="true">
             <intent-filter>
@@ -112,13 +113,13 @@
 
         <receiver android:name=".BootReceiver" android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".LauncherAccessibilityService"
-            android:label="LTvLauncher Home Button Fix"
+            android:label="Apex TV Home Button Fix"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="true">
             <intent-filter>

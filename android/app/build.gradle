@@ -1,5 +1,6 @@
 /*
- * FLauncher
+ * Apex TV
+ * Based on FLauncher by Étienne Fesser.
  * Copyright (C) 2021  Étienne Fesser
  *
  * This program is free software: you can redistribute it and/or modify
@@ -52,23 +53,22 @@ if (flutterVersionName == null) {
 }
 
 def secretProperties = new Properties()
-secretProperties.setProperty("signing_keystore_password", "${System.getenv('FLAUNCHER_KEYSTORE_PASSWORD')}")
-secretProperties.setProperty("signing_key_password", "${System.getenv('FLAUNCHER_SIGNING_KEY_PASSWORD')}")
-secretProperties.setProperty("signing_key_alias", "${System.getenv('FLAUNCHER_SIGNING_KEY_ALIAS')}")
+secretProperties.setProperty("signing_keystore_password", "${System.getenv('APEX_TV_KEYSTORE_PASSWORD')}")
+secretProperties.setProperty("signing_key_password", "${System.getenv('APEX_TV_SIGNING_KEY_PASSWORD')}")
+secretProperties.setProperty("signing_key_alias", "${System.getenv('APEX_TV_SIGNING_KEY_ALIAS')}")
 
 def keystoreFilePath = System.getenv("KEYSTORE_FILE") ?: localProperties['storeFile']
 def hasKeystore = keystoreFilePath != null && file(keystoreFilePath).exists()
 
 android {
     dependenciesInfo {
-        // Disables dependency metadata when building APKs (for IzzyOnDroid/F-Droid)
+        // Disables dependency metadata when building APKs.
         includeInApk = false
-        // Disables dependency metadata when building Android App Bundles (for Google Play)
         includeInBundle = false
     }
 
     defaultConfig {
-        applicationId "com.leanbitlab.ltvL"
+        applicationId "be.skyral.apextv"
         compileSdk 35
         minSdk 21
         targetSdk 35
@@ -114,7 +114,6 @@ android {
 
     splits {
         abi {
-            // https://stackoverflow.com/a/39950584/21037183
             enable gradle.startParameter.taskNames.any { it.contains("assembleRelease") } && System.getenv("UNIVERSAL_ONLY") != "true"
             reset()
             include "armeabi-v7a", "arm64-v8a"
@@ -127,16 +126,16 @@ android {
         targetCompatibility JavaVersion.VERSION_21
     }
 
-    namespace 'com.leanbitlab.ltvL'
+    namespace 'be.skyral.apextv'
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             output.versionCodeOverride = variant.versionCode
             def abi = output.getFilter(com.android.build.OutputFile.ABI)
             if (abi != null) {
-                outputFileName = "LTvLauncher-${abi}-${variant.buildType.name}.apk"
+                outputFileName = "ApexTV-${abi}-${variant.buildType.name}.apk"
             } else {
-                outputFileName = "LTvLauncher-universal-${variant.buildType.name}.apk"
+                outputFileName = "ApexTV-universal-${variant.buildType.name}.apk"
             }
         }
     }
